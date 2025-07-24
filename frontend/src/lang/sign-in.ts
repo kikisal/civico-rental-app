@@ -20,6 +20,16 @@ const strings = new LocalizedStrings({
     RESET_PASSWORD: 'Forgot password?',
     STAY_CONNECTED: 'Stay connected',
   },
+  it: {
+    SIGN_IN_HEADING: 'Sign in',
+    SIGN_IN: 'Sign in',
+    SIGN_UP: 'Sign up',
+    ERROR_IN_SIGN_IN: 'Incorrect email or password.',
+    IS_BLACKLISTED: 'Your account is suspended.',
+    RESET_PASSWORD: 'Forgot password?',
+    STAY_CONNECTED: 'Stay connected',
+  },
+
 })
 
 langHelper.setLanguage(strings)

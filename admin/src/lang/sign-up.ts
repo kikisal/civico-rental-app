@@ -16,6 +16,13 @@ const strings = new LocalizedStrings({
     RECAPTCHA_ERROR: 'Fill out the captcha to continue.',
     SIGN_UP_ERROR: 'An error occurred during sign up.',
   },
+  it: {
+    SIGN_UP_HEADING: 'Sign up',
+    TOS_SIGN_UP: 'I read and agree with the Terms of Use.',
+    SIGN_UP: 'Sign up',
+    RECAPTCHA_ERROR: 'Fill out the captcha to continue.',
+    SIGN_UP_ERROR: 'An error occurred during sign up.',
+  },
 })
 
 langHelper.setLanguage(strings)

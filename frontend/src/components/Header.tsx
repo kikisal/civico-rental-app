@@ -468,6 +468,7 @@ const Header = ({
                   {/* {lang?.label} */}
                   <CircleFlag countryCode={lang?.countryCode as string} height={flagHeight} className="flag" title={lang?.label} />
                 </Button>
+                
               )}
               {!hideSignin && !isSignedIn && isLoaded && (
                 <Button variant="contained" size="medium" startIcon={<SignUpIcon />} onClick={() => navigate('/sign-up')} disableElevation className="btn btn-auth" aria-label="Sign in">
@@ -527,4 +528,4 @@ const Header = ({
   )
 }
 
-export default memo(Header)
+export default memo(Header);

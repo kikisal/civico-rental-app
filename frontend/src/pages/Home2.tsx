@@ -14,7 +14,6 @@ import L from 'leaflet'
 import * as movininTypes from ':movinin-types'
 import env from '@/config/env.config'
 import { strings } from '@/lang/home'
-
 import * as CountryService from '@/services/CountryService'
 import * as LocationService from '@/services/LocationService'
 import Layout from '@/components/Layout'
@@ -29,8 +28,7 @@ import '@/assets/css/home.css'
 const Home = () => {
   const navigate = useNavigate()
 
-  const [countries, setCountries] = useState<movininTypes.CountryInfo[]>([]);
-  
+  const [countries, setCountries] = useState<movininTypes.CountryInfo[]>([])
   const [tabValue, setTabValue] = useState(0)
   const [openLocationSearchFormDialog, setOpenLocationSearchFormDialog] = useState(false)
   const [locations, setLocations] = useState<movininTypes.Location[]>([])
@@ -67,7 +65,6 @@ const Home = () => {
       console.error('Cover video not found')
     }
   }
-  console.log(strings);
 
   return (
     <Layout onLoad={onLoad} strict={false}>
@@ -95,19 +92,18 @@ const Home = () => {
             )}
           </div>
 
-          <div className="home-title">{strings.WELCOME_LABEL + ` ${env.WEBSITE_NAME}`} </div>
-          <div className="home-cover" style={{maxWidth: "700px"}}>{strings.COVER}</div>
+          <div className="home-title">{strings.TITLE}</div>
+          <div className="home-cover">{strings.COVER}</div>
           {/* <div className="home-subtitle">{strings.SUBTITLE}</div> */}
 
         </div>
-        (
+
         <div className="search">
           <div className="home-search">
             <SearchForm />
           </div>
         </div>
-        )
-        
+
         <div className="services">
 
           <h1>{strings.SERVICES_TITLE}</h1>
@@ -215,7 +211,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        
+
         <div className="home-map">
           <Map
             title={strings.MAP_TITLE}

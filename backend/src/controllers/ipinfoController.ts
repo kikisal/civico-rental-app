@@ -11,6 +11,7 @@ import * as ipinfoHelper from '../utils/ipinfoHelper'
  */
 export const getCountryCode = async (req: Request, res: Response) => {
   const clientIp = ipinfoHelper.getClientIp(req)
-  const countryCode = await ipinfoHelper.getCountryCode(clientIp)
+  const countryCode = await ipinfoHelper.getCountryCode(clientIp);
+  
   res.json(countryCode)
 }

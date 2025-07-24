@@ -4,8 +4,10 @@ import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
   fr: {
+    WELCOME_LABEL: "Bienvenue à",
     TITLE: "Bienvenue sur l'immobilier",
     COVER: 'Rechercher des biens immobiliers',
+    SHORT_DESCRIPTION: "Scopri la tua casa vacanze ideale, ospitata da Angelo e Adriana. Che tu stia esplorando o rilassandoti, questa casa ha tutto ciò di cui hai bisogno per un soggiorno confortevole e memorabile.",
     DESTINATIONS_TITLE: 'Parcourir par destinations',
     MAP_TITLE: 'Carte des destinations',
     SERVICES_TITLE: "Qu'est-ce qui nous différencie ?",
@@ -30,12 +32,15 @@ const strings = new LocalizedStrings({
     CUSTOMER_CARE_GUIDANCE: 'Conseils pour la sélection de biens',
     CUSTOMER_CARE_SUPPORT: 'Conseils et assistance',
   },
+  
   en: {
-    TITLE: 'Welcome to Real Estate',
-    COVER: 'Search for Real Estate, Property & Homes',
+    WELCOME_LABEL: "Welcome to",
+    TITLE: 'Welcome!',
+    COVER: 'Explore our Cozy Rooms for Rent Near Mount Etna',
+    SHORT_DESCRIPTION: "Explore your ideal house, managed by Angelo and Adriana. Wether you're just exploring or relaxing, this house has everything you need",
     DESTINATIONS_TITLE: 'Browse by Destinations',
-    MAP_TITLE: 'Map of Destinations',
-    SERVICES_TITLE: 'What Makes Us Different?',
+    MAP_TITLE: 'House Location',
+    SERVICES_TITLE: 'Our Service',
     SERVICES_FLEET_TITLE: 'Wide Range Of Properties',
     SERVICES_FLEET: "From apartments to luxury houses, our distinctive properties cater to every travel need. Whether it's business or leisure, we have the perfect property for you.",
     SERVICES_FLEXIBLE_TITLE: 'Flexible Scheduling',
@@ -57,7 +62,38 @@ const strings = new LocalizedStrings({
     CUSTOMER_CARE_GUIDANCE: 'Property Selection Guidance',
     CUSTOMER_CARE_SUPPORT: 'Advice and Support',
   },
+
+  it: {
+    WELCOME_LABEL: "Benvenuto in",
+    TITLE: 'Welcome!',
+    COVER: 'Explore our Cozy Rooms for Rent Near Mount Etna',
+    SHORT_DESCRIPTION: "Explore your ideal house, managed by Angelo and Adriana. Wether you're just exploring or relaxing, this house has everything you need",
+    DESTINATIONS_TITLE: 'Browse by Destinations',
+    MAP_TITLE: 'House Location',
+    SERVICES_TITLE: 'Our Service',
+    SERVICES_FLEET_TITLE: 'Wide Range Of Properties',
+    SERVICES_FLEET: "From apartments to luxury houses, our distinctive properties cater to every travel need. Whether it's business or leisure, we have the perfect property for you.",
+    SERVICES_FLEXIBLE_TITLE: 'Flexible Scheduling',
+    SERVICES_FLEXIBLE: "Offering convenient locations and flexible scheduling, we make renting a property hassle-free. Whether you're arriving a city or an International Airport, your property will be ready when you are.",
+    SERVICES_PRICES_TITLE: 'Excellent Prices',
+    SERVICES_PRICES: 'We offer competitive rates on all poperties, ensuring you get top-quality properties at unbeatable prices. No need to compromise - get great value for your money every time.',
+    SERVICES_BOOKING_ONLINE_TITLE: 'Easy Online Booking',
+    SERVICES_BOOKING_ONLINE: 'Skip the lines and book your property in minutes through our user-friendly online platform. Compare options, customize your rental, and secure your property effortlessly.',
+    SERVICE_INSTANT_BOOKING_TITLE: 'Instant Booking',
+    SERVICE_INSTANT_BOOKING: "No waiting around! Once you choose your property and complete your booking, you'll receive an immediate confirmation, ensuring a smooth and hassle-free rental process.",
+    SERVICES_SUPPORT_TITLE: '24/7 Customer Support',
+    SERVICES_SUPPORT: "Whether you're booking a property, need assistance, or have any questions, our dedicated support team is available around the clock.",
+    CUSTOMER_CARE_TITLE: `${env.WEBSITE_NAME} Customer Care`,
+    CONTACT_US: 'Contact Us',
+    CUSTOMER_CARE_SUBTITLE: 'Always Here to Help',
+    CUSTOMER_CARE_TEXT: `At ${env.WEBSITE_NAME}, we're dedicated to providing prompt and reliable support to ensure your property rental experience is smooth and enjoyable from start to finish.`,
+    CUSTOMER_CARE_ASSISTANCE: '24/7 Assistance',
+    CUSTOMER_CARE_MODIFICATION: 'Inquiries and Modifications',
+    CUSTOMER_CARE_GUIDANCE: 'Property Selection Guidance',
+    CUSTOMER_CARE_SUPPORT: 'Advice and Support',
+  }
 })
 
 langHelper.setLanguage(strings)
+
 export { strings }

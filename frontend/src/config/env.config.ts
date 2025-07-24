@@ -12,6 +12,11 @@ const LANGUAGES = [
     label: 'English',
   },
   {
+    code: 'it',
+    countryCode: 'it',
+    label: 'Italiano',
+  },
+  {
     code: 'fr',
     countryCode: 'fr',
     label: 'Français',

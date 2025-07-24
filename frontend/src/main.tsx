@@ -49,216 +49,219 @@ import '@/assets/css/common.css'
 import '@/assets/css/index.css'
 
 if (env.isProduction) {
-  disableDevTools()
+	disableDevTools()
 }
 
 let language = env.DEFAULT_LANGUAGE
 const user = JSON.parse(localStorage.getItem('mi-fe-user') ?? 'null')
 let lang = UserService.getQueryLanguage()
 
+
 if (lang) {
-  if (!env.LANGUAGES.includes(lang)) {
-    lang = localStorage.getItem('mi-fe-language')
 
-    if (lang && !env.LANGUAGES.includes(lang)) {
-      lang = env.DEFAULT_LANGUAGE
-    }
-  }
+	if (!env.LANGUAGES.includes(lang)) {
+		lang = localStorage.getItem('mi-fe-language')
 
-  try {
-    if (user) {
-      language = user.language
-      if (lang && lang.length === 2 && user.language !== lang) {
-        const data = {
-          id: user.id,
-          language: lang,
-        }
+		if (lang && !env.LANGUAGES.includes(lang)) {
+			lang = env.DEFAULT_LANGUAGE
+		}
+	}
 
-        const status = await UserService.validateAccessToken()
+	try {
+		if (user) {
+			language = user.language
+			if (lang && lang.length === 2 && user.language !== lang) {
+				const data = {
+					id: user.id,
+					language: lang,
+				}
 
-        if (status === 200) {
-          const _status = await UserService.updateLanguage(data)
-          if (_status !== 200) {
-            helper.error(null, commonStrings.CHANGE_LANGUAGE_ERROR)
-          }
-        }
+				const status = await UserService.validateAccessToken()
 
-        language = lang
-      }
-    } else if (lang) {
-      language = lang
-    }
-    UserService.setLanguage(language)
-    commonStrings.setLanguage(language)
-  } catch (err) {
-    helper.error(err, commonStrings.CHANGE_LANGUAGE_ERROR)
-  }
+				if (status === 200) {
+					const _status = await UserService.updateLanguage(data)
+					if (_status !== 200) {
+						helper.error(null, commonStrings.CHANGE_LANGUAGE_ERROR)
+					}
+				}
+
+				language = lang
+			}
+		} else if (lang) {
+			language = lang
+		}
+		UserService.setLanguage(language)
+		commonStrings.setLanguage(language)
+	} catch (err) {
+		helper.error(err, commonStrings.CHANGE_LANGUAGE_ERROR)
+	}
 } else {
-  //
-  // If language not set, set language by IP
-  //
-  let storedLang
+	//
+	// If language not set, set language by IP
+	//
+	let storedLang
 
-  if (user && user.language) {
-    storedLang = user.language
-  } else {
-    const slang = localStorage.getItem('mi-fe-language')
-    if (slang && slang.length === 2) {
-      storedLang = slang
-    }
-  }
+	if (user && user.language) {
+		storedLang = user.language
+	} else {
+		const slang = localStorage.getItem('mi-fe-language')
+		if (slang && slang.length === 2) {
+			storedLang = slang
+		}
+	}
 
-  const updateLang = (_lang: string) => {
-    UserService.setLanguage(_lang)
+	const updateLang = (_lang: string) => {
+		UserService.setLanguage(_lang)
 
-    activateStrings.setLanguage(_lang)
-    bookingStrings.setLanguage(_lang)
-    bookingFilterStrings.setLanguage(_lang)
-    bookingListStrings.setLanguage(_lang)
-    bookingPropertyListStrings.setLanguage(_lang)
-    bookingsStrings.setLanguage(_lang)
-    changePasswordStrings.setLanguage(_lang)
-    checkoutStrings.setLanguage(_lang)
-    commonStrings.setLanguage(_lang)
-    contactFormStrings.setLanguage(_lang)
-    footerStrings.setLanguage(_lang)
-    headerStrings.setLanguage(_lang)
-    homeStrings.setLanguage(_lang)
-    locationCarrouselStrings.setLanguage(_lang)
-    mapStrings.setLanguage(_lang)
-    masterStrings.setLanguage(_lang)
-    noMatchStrings.setLanguage(_lang)
-    notificationsStrings.setLanguage(_lang)
-    propertiesStrings.setLanguage(_lang)
-    propertyStrings.setLanguage(_lang)
-    rentalTermStrings.setLanguage(_lang)
-    resetPasswordStrings.setLanguage(_lang)
-    searchStrings.setLanguage(_lang)
-    settingsStrings.setLanguage(_lang)
-    signInStrings.setLanguage(_lang)
-    signUpStrings.setLanguage(_lang)
-    soldOutStrings.setLanguage(_lang)
-    tosStrings.setLanguage(_lang)
-  }
+		activateStrings.setLanguage(_lang)
+		bookingStrings.setLanguage(_lang)
+		bookingFilterStrings.setLanguage(_lang)
+		bookingListStrings.setLanguage(_lang)
+		bookingPropertyListStrings.setLanguage(_lang)
+		bookingsStrings.setLanguage(_lang)
+		changePasswordStrings.setLanguage(_lang)
+		checkoutStrings.setLanguage(_lang)
+		commonStrings.setLanguage(_lang)
+		contactFormStrings.setLanguage(_lang)
+		footerStrings.setLanguage(_lang)
+		headerStrings.setLanguage(_lang)
+		homeStrings.setLanguage(_lang)
+		locationCarrouselStrings.setLanguage(_lang)
+		mapStrings.setLanguage(_lang)
+		masterStrings.setLanguage(_lang)
+		noMatchStrings.setLanguage(_lang)
+		notificationsStrings.setLanguage(_lang)
+		propertiesStrings.setLanguage(_lang)
+		propertyStrings.setLanguage(_lang)
+		rentalTermStrings.setLanguage(_lang)
+		resetPasswordStrings.setLanguage(_lang)
+		searchStrings.setLanguage(_lang)
+		settingsStrings.setLanguage(_lang)
+		signInStrings.setLanguage(_lang)
+		signUpStrings.setLanguage(_lang)
+		soldOutStrings.setLanguage(_lang)
+		tosStrings.setLanguage(_lang)
+	}
+	
+	if (env.SET_LANGUAGE_FROM_IP && !storedLang) {
+		const country = await IpInfoService.getCountryCode();
+		console.log("country: ", country);
 
-  if (env.SET_LANGUAGE_FROM_IP && !storedLang) {
-    const country = await IpInfoService.getCountryCode()
-
-    if (['FR', 'MA'].includes(country)) {
-      updateLang('fr')
-    } else if (['US', 'GB', 'AU'].includes(country)) {
-      updateLang('en')
-    } else {
-      updateLang(env.DEFAULT_LANGUAGE)
-    }
-  }
+		if (['FR', 'MA'].includes(country)) {
+			updateLang('fr')
+		} else if (['US', 'GB', 'AU'].includes(country)) {
+			updateLang('en')
+		} else {
+			updateLang(env.DEFAULT_LANGUAGE)
+		}
+	}
 }
 
 language = UserService.getLanguage()
 const isFr = language === 'fr'
 
 const theme = createTheme(
-  {
-    palette: {
-      primary: {
-        main: '#1a1a1a',
-        // contrastText: '#003B95',
-        // dark: '#003B95',
-      },
-    },
-    typography: {
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-    },
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          body: {
-            backgroundColor: '#fafafa',
-          },
-        },
-      },
-      MuiFormControl: {
-        styleOverrides: {
-          root: {
-            '& .Mui-disabled': {
-              color: '#333 !important',
-            },
-          },
-        },
-      },
-      MuiSwitch: {
-        styleOverrides: {
-          root: {
-            '& .Mui-checked': {
-              color: '#232323 !important',
-            },
-            '& .Mui-checked+.MuiSwitch-track': {
-              opacity: 0.7,
-              backgroundColor: '#232323 !important',
-            },
-          },
-        },
-      },
-      MuiAutocomplete: {
-        styleOverrides: {
-          root: {
-            '& .MuiAutocomplete-inputRoot': {
-              paddingRight: '20px !important',
-            },
-          },
-          listbox: {
-            '& .Mui-focused': {
-              backgroundColor: '#eee !important',
-            },
-          },
-          option: {
-            // Hover
-            // '&[data-focus="true"]': {
-            //     backgroundColor: '#eee !important',
-            //     borderColor: 'transparent',
-            // },
-            // Selected
-            '&[aria-selected="true"]': {
-              backgroundColor: '#faad43 !important',
-            },
-          },
-        },
-      },
-    },
-  },
-  isFr ? frFR : enUS,
-  isFr ? dataGridfrFR : dataGridenUS,
-  isFr ? corefrFR : coreenUS,
+	{
+		palette: {
+			primary: {
+				main: '#1a1a1a',
+				// contrastText: '#003B95',
+				// dark: '#003B95',
+			},
+		},
+		typography: {
+			fontFamily: [
+				'-apple-system',
+				'BlinkMacSystemFont',
+				'"Segoe UI"',
+				'Roboto',
+				'"Helvetica Neue"',
+				'Arial',
+				'sans-serif',
+				'"Apple Color Emoji"',
+				'"Segoe UI Emoji"',
+				'"Segoe UI Symbol"',
+			].join(','),
+		},
+		components: {
+			MuiCssBaseline: {
+				styleOverrides: {
+					body: {
+						backgroundColor: '#fafafa',
+					},
+				},
+			},
+			MuiFormControl: {
+				styleOverrides: {
+					root: {
+						'& .Mui-disabled': {
+							color: '#333 !important',
+						},
+					},
+				},
+			},
+			MuiSwitch: {
+				styleOverrides: {
+					root: {
+						'& .Mui-checked': {
+							color: '#232323 !important',
+						},
+						'& .Mui-checked+.MuiSwitch-track': {
+							opacity: 0.7,
+							backgroundColor: '#232323 !important',
+						},
+					},
+				},
+			},
+			MuiAutocomplete: {
+				styleOverrides: {
+					root: {
+						'& .MuiAutocomplete-inputRoot': {
+							paddingRight: '20px !important',
+						},
+					},
+					listbox: {
+						'& .Mui-focused': {
+							backgroundColor: '#eee !important',
+						},
+					},
+					option: {
+						// Hover
+						// '&[data-focus="true"]': {
+						//     backgroundColor: '#eee !important',
+						//     borderColor: 'transparent',
+						// },
+						// Selected
+						'&[aria-selected="true"]': {
+							backgroundColor: '#faad43 !important',
+						},
+					},
+				},
+			},
+		},
+	},
+	isFr ? frFR : enUS,
+	isFr ? dataGridfrFR : dataGridenUS,
+	isFr ? corefrFR : coreenUS,
 )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline>
-      <App />
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover
-        theme="dark"
-      />
-    </CssBaseline>
-    {/* <a
+	<ThemeProvider theme={theme}>
+		<CssBaseline>
+			<App />
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+				theme="dark"
+			/>
+		</CssBaseline>
+		{/* <a
       className="github-fork-ribbon fixed left-bottom"
       href="https://github.com/aelassas/movinin"
       data-ribbon="Fork me on GitHub"
@@ -266,5 +269,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     >
       Fork me on GitHub
     </a> */}
-  </ThemeProvider>,
+	</ThemeProvider>,
 )

@@ -32,6 +32,21 @@
       PRIVACY_POLICY: 'Privacy Policy',
       COOKIE_POLICY: 'Cookie Policy',
     },
+    it: {
+      SIGN_IN: 'Sign in',
+      HOME: 'Home',
+      BOOKINGS: 'Bookings',
+      ABOUT: 'About',
+      TOS: 'Terms of Service',
+      CONTACT: 'Contact',
+      LANGUAGE: 'Language',
+      SETTINGS: 'Settings',
+      SIGN_OUT: 'Sign out',
+      AGENCIES: 'Agencies',
+      LOCATIONS: 'Destinations',
+      PRIVACY_POLICY: 'Privacy Policy',
+      COOKIE_POLICY: 'Cookie Policy',
+    },
   })
 
   langHelper.setLanguage(strings)
