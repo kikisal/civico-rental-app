@@ -22,6 +22,36 @@ const strings = new LocalizedStrings({
     DAY: 'day',
     YEAR: 'year',
   },
+  it: {
+    MONTHLY: 'Mensile',
+    WEEKLY: 'Settimanale',
+    DAILY: 'Giornaliero',
+    YEARLY: 'Annuale',
+    MONTH: 'mese',
+    WEEK: 'settimana',
+    DAY: 'giorno',
+    YEAR: 'anno',
+  },
+  de: {
+    MONTHLY: 'Monatlich',
+    WEEKLY: 'Wöchentlich',
+    DAILY: 'Täglich',
+    YEARLY: 'Jährlich',
+    MONTH: 'Monat',
+    WEEK: 'Woche',
+    DAY: 'Tag',
+    YEAR: 'Jahr',
+  },
+  es: {
+    MONTHLY: 'Mensual',
+    WEEKLY: 'Semanal',
+    DAILY: 'Diario',
+    YEARLY: 'Anual',
+    MONTH: 'mes',
+    WEEK: 'semana',
+    DAY: 'día',
+    YEAR: 'año',
+  }
 })
 
 langHelper.setLanguage(strings)

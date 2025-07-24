@@ -13,10 +13,20 @@ const strings = new LocalizedStrings({
     SIGN_UP_ERROR: 'An error occurred during sign up.',
   },
   it: {
-    SIGN_UP_HEADING: 'Register',
-    SIGN_UP: 'Register',
-    SIGN_UP_ERROR: 'An error occurred during sign up.',
+    SIGN_UP_HEADING: 'Registrazione',
+    SIGN_UP: 'Registrati',
+    SIGN_UP_ERROR: "Si è verificato un errore durante la registrazione.",
   },
+  de: {
+    SIGN_UP_HEADING: 'Registrieren',
+    SIGN_UP: 'Registrieren',
+    SIGN_UP_ERROR: 'Beim Registrieren ist ein Fehler aufgetreten.',
+  },
+  es: {
+    SIGN_UP_HEADING: 'Registro',
+    SIGN_UP: 'Registrarse',
+    SIGN_UP_ERROR: 'Ocurrió un error durante el registro.',
+  }
 })
 
 langHelper.setLanguage(strings)

@@ -120,6 +120,171 @@ If you have any questions about this Privacy Policy or our data practices, pleas
 By using our services, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
     `,
   },
+  it: {
+    TITLE: 'Informativa sulla Privacy',
+    PRIVACY_POLICY: `
+La tua privacy è importante per noi di ${env.WEBSITE_NAME}. La presente Informativa sulla Privacy descrive come raccogliamo, utilizziamo e proteggiamo i tuoi dati quando utilizzi il nostro sito e i nostri servizi. Accedendo ai nostri servizi, acconsenti alle pratiche descritte in questa informativa.
+
+1. Informazioni che raccogliamo
+
+Raccogliamo informazioni da te quando ti registri sul nostro sito, effettui un ordine o interagisci con i nostri servizi. Le informazioni che potremmo raccogliere includono:
+
+Nome  
+Indirizzo email  
+Numero di telefono  
+Informazioni di pagamento  
+Preferenze di noleggio  
+
+Puoi visitare il nostro sito in modo anonimo, ma alcune funzionalità potrebbero essere limitate.
+
+2. Come utilizziamo le tue informazioni
+
+Le tue informazioni possono essere utilizzate nei seguenti modi:
+
+Per elaborare le tue prenotazioni e i pagamenti  
+Per migliorare il servizio clienti  
+Per inviare email periodiche relative al tuo ordine o ad altri prodotti e servizi  
+Per rispondere a richieste e fornire supporto
+
+3. Come proteggiamo le tue informazioni
+
+Adottiamo una varietà di misure di sicurezza per proteggere le tue informazioni personali. Tutte le informazioni sensibili sono trasmesse tramite server sicuri e accessibili solo da personale autorizzato. Non memorizziamo le informazioni della tua carta di credito sui nostri server.
+
+4. Condivisione delle tue informazioni
+
+Non vendiamo, scambiamo o trasferiamo in altro modo le tue informazioni personali a terzi, ad eccezione dei partner fidati che ci assistono nella gestione del sito, nell'attività o nel servizio, a condizione che tali parti concordino nel mantenere riservate queste informazioni. Potremmo inoltre divulgare le tue informazioni per rispettare la legge, applicare le politiche del sito o proteggere i nostri diritti o quelli altrui.
+
+5. Privacy dei minori
+
+Rispettiamo il Children's Online Privacy Protection Act (COPPA). I nostri servizi non sono rivolti ai bambini sotto i 13 anni e non raccogliamo consapevolmente informazioni personali da minori. Se veniamo a conoscenza di aver raccolto dati da un minore, provvederemo a cancellarli.
+
+6. Modifiche alla nostra Informativa sulla Privacy
+
+Possiamo aggiornare questa Informativa periodicamente. Ti informeremo di eventuali modifiche pubblicando la nuova versione su questa pagina. Ti invitiamo a consultarla regolarmente.
+
+7. I tuoi diritti
+
+Hai il diritto di accedere alle informazioni personali che conserviamo su di te, richiedere correzioni o cancellazioni, salvo eccezioni. Per esercitare questi diritti, contattaci tramite le informazioni riportate di seguito.
+
+8. Contattaci
+
+Per qualsiasi domanda su questa informativa o sul trattamento dei tuoi dati, contattaci all’indirizzo ${env.CONTACT_EMAIL}. Ci impegniamo a proteggere la tua privacy.
+
+9. Accettazione
+
+Utilizzando i nostri servizi, confermi di aver letto, compreso e accettato la presente informativa sulla privacy.
+    `,
+  },
+  de: {
+    TITLE: 'Datenschutzerklärung',
+    PRIVACY_POLICY: `
+Deine Privatsphäre ist uns bei ${env.WEBSITE_NAME} wichtig. In dieser Datenschutzerklärung wird erläutert, wie wir deine Daten erheben, verwenden und schützen, wenn du unsere Website und Dienste nutzt. Durch die Nutzung unserer Dienste stimmst du den in dieser Erklärung beschriebenen Praktiken zu.
+
+1. Welche Informationen wir sammeln
+
+Wir erfassen Informationen, wenn du dich auf unserer Website registrierst, eine Bestellung aufgibst oder mit unseren Diensten interagierst. Die erfassten Daten können Folgendes umfassen:
+
+Name  
+E-Mail-Adresse  
+Telefonnummer  
+Zahlungsinformationen  
+Mietpräferenzen  
+
+Du kannst unsere Seite anonym besuchen, jedoch sind manche Funktionen dann eingeschränkt.
+
+2. Wie wir deine Informationen verwenden
+
+Wir verwenden deine Daten für:
+
+Bearbeitung von Reservierungen und Zahlungen  
+Verbesserung unseres Kundenservices  
+Versenden von E-Mails zu Bestellungen oder Angeboten  
+Beantwortung von Anfragen und Supportanliegen
+
+3. Schutz deiner Daten
+
+Wir setzen verschiedene Sicherheitsmaßnahmen ein, um deine personenbezogenen Daten zu schützen. Alle sensiblen Informationen werden über sichere Server übertragen und sind nur autorisierten Personen zugänglich. Wir speichern keine Kreditkarteninformationen auf unseren Servern.
+
+4. Weitergabe deiner Daten
+
+Wir verkaufen oder tauschen deine personenbezogenen Daten nicht. Eine Weitergabe erfolgt nur an vertrauenswürdige Partner, die uns bei der Bereitstellung unserer Dienste unterstützen und zur Vertraulichkeit verpflichtet sind. Eine Weitergabe kann auch erfolgen, wenn dies gesetzlich vorgeschrieben ist oder unsere Rechte oder die Sicherheit anderer geschützt werden müssen.
+
+5. Datenschutz für Kinder
+
+Wir halten uns an den Children’s Online Privacy Protection Act (COPPA). Unsere Dienste richten sich nicht an Kinder unter 13 Jahren, und wir sammeln nicht wissentlich deren Daten. Wenn uns das bekannt wird, löschen wir diese Informationen umgehend.
+
+6. Änderungen dieser Datenschutzerklärung
+
+Diese Erklärung kann gelegentlich aktualisiert werden. Wir veröffentlichen Änderungen auf dieser Seite. Bitte überprüfe regelmäßig die aktuelle Version.
+
+7. Deine Rechte
+
+Du hast das Recht, Auskunft über deine gespeicherten Daten zu verlangen, falsche Informationen zu korrigieren oder die Löschung zu beantragen, vorbehaltlich gesetzlicher Ausnahmen. Kontaktiere uns über die unten angegebenen Kontaktdaten.
+
+8. Kontakt
+
+Bei Fragen zur Datenschutzerklärung oder zum Datenschutz schreib uns an ${env.CONTACT_EMAIL}. Wir helfen dir gerne weiter.
+
+9. Anerkennung
+
+Durch die Nutzung unserer Dienste bestätigst du, dass du diese Datenschutzerklärung gelesen, verstanden und akzeptiert hast.
+    `,
+  },
+  es: {
+    TITLE: 'Política de Privacidad',
+    PRIVACY_POLICY: `
+Tu privacidad es importante para nosotros en ${env.WEBSITE_NAME}. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información cuando usas nuestro sitio web y servicios. Al acceder a nuestros servicios, aceptas las prácticas descritas en esta política.
+
+1. Información que recopilamos
+
+Recopilamos información cuando te registras, haces un pedido o interactúas con nuestros servicios. Esta información puede incluir:
+
+Nombre  
+Correo electrónico  
+Número de teléfono  
+Información de pago  
+Preferencias de alquiler  
+
+Puedes visitar nuestro sitio de forma anónima, aunque ciertas funciones podrían estar limitadas.
+
+2. Cómo usamos tu información
+
+Usamos tu información para:
+
+Procesar reservas y pagos  
+Mejorar el servicio al cliente  
+Enviar correos periódicos sobre tus pedidos o servicios  
+Responder preguntas y solicitudes de soporte
+
+3. Cómo protegemos tu información
+
+Implementamos medidas de seguridad para proteger tus datos personales. Toda información sensible se transmite mediante servidores seguros y sólo es accesible por personal autorizado. No almacenamos información de tarjetas de crédito en nuestros servidores.
+
+4. Compartir tu información
+
+No vendemos, intercambiamos ni transferimos tu información personal a terceros, salvo a socios confiables que nos ayudan a operar el sitio o proveer servicios, y que acuerdan mantener esa información confidencial. También podríamos divulgarla si es necesario para cumplir con la ley o proteger derechos y seguridad.
+
+5. Privacidad de menores
+
+Cumplimos con la ley COPPA. Nuestros servicios no están dirigidos a menores de 13 años y no recopilamos conscientemente su información. Si descubrimos que lo hemos hecho, eliminaremos esos datos de inmediato.
+
+6. Cambios en la Política de Privacidad
+
+Esta política puede actualizarse ocasionalmente. Te informaremos de los cambios publicándolos en esta página. Revisa esta política periódicamente.
+
+7. Tus derechos
+
+Puedes solicitar acceso a tus datos personales, corregir errores o solicitar su eliminación, sujeto a ciertas excepciones. Para ejercer estos derechos, contáctanos con la información a continuación.
+
+8. Contáctanos
+
+Si tienes dudas sobre esta política o el uso de tus datos, contáctanos en ${env.CONTACT_EMAIL}. Estamos comprometidos a proteger tu privacidad.
+
+9. Reconocimiento
+
+Al usar nuestros servicios, reconoces que has leído, comprendido y aceptado esta Política de Privacidad.
+    `,
+  }
 })
 
 langHelper.setLanguage(strings)

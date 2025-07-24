@@ -30,10 +30,10 @@ const CheckoutSession = () => {
           const status = await StripeService.checkCheckoutSession(sessionId)
 
           const _bookingId = await BookingService.getBookingId(sessionId)
-          setBookingId(_bookingId)
+          setBookingId(_bookingId);
 
-          setNoMatch(status === 204)
-          setSuccess(status === 200)
+          setNoMatch(status === 204);
+          setSuccess(status === 200);
         } catch {
           setSuccess(false)
         } finally {

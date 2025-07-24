@@ -12,15 +12,25 @@ const LANGUAGES = [
     label: 'English',
   },
   {
+    code: 'fr',
+    countryCode: 'fr',
+    label: 'Français',
+  },
+  {
     code: 'it',
     countryCode: 'it',
     label: 'Italiano',
   },
   {
-    code: 'fr',
-    countryCode: 'fr',
-    label: 'Français',
+    code: 'de',
+    countryCode: 'de',
+    label: "German"
   },
+  {
+    code: 'es',
+    countryCode: 'es',
+    label: "Spanish"
+  }
 ]
 
 type Currency = { code: string, symbol: string }

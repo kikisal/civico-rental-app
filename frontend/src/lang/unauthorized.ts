@@ -8,6 +8,14 @@ const strings = new LocalizedStrings({
   en: {
     UNAUTHORIZED: 'Unauthorized access',
   },
+  it: {
+    UNAUTHORIZED: 'Accesso non autorizzato',
+  },
+
+  de: {
+    UNAUTHORIZED: 'Unbefugter Zugriff',
+  },
+
   es: {
     UNAUTHORIZED: 'Acceso no autorizado',
   },

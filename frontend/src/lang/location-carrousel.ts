@@ -12,6 +12,21 @@ const strings = new LocalizedStrings({
     AVALIABLE_LOCATION: 'available location',
     AVALIABLE_LOCATIONS: 'available locations',
   },
+  it: {
+    SELECT_LOCATION: 'Seleziona destinazione',
+    AVALIABLE_LOCATION: 'località disponibile',
+    AVALIABLE_LOCATIONS: 'località disponibili',
+  },
+  de: {
+    SELECT_LOCATION: 'Reiseziel auswählen',
+    AVALIABLE_LOCATION: 'verfügbare Location',
+    AVALIABLE_LOCATIONS: 'verfügbare Locations',
+  },
+  es: {
+    SELECT_LOCATION: 'Seleccionar destino',
+    AVALIABLE_LOCATION: 'ubicación disponible',
+    AVALIABLE_LOCATIONS: 'ubicaciones disponibles',
+  }
 })
 
 langHelper.setLanguage(strings)

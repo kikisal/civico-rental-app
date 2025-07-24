@@ -237,27 +237,34 @@ div.home div.customer-care div.customer-care-img img {
 /* Device width is less than or equal to 960px */
 
 @media only screen and (width <=960px) {
+  .home-site-description span {
+    max-width: 90%!important;
+    margin: 0 auto;
+  }
+
   div.home div.home-content {
-    padding: 85px 0;
-    justify-content: flex-start !important;
-    height: 560px;
+    padding: 55px 0;
+    justify-content: center !important;
+
   }
 
   div.home div.home-title {
     font-size: 22px;
     font-weight: 500;
     margin-bottom: 20px;
+    display: none;
   }
 
   div.home div.home-cover {
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 800;
     padding: 0 10px;
+    
   }
 
   div.home div.search div.home-search {
     padding: 20px 10px;
-    margin: -187px 20px 0 20px;
+    margin: 0 20px 0 20px;
     width: calc(100% - 20px);
     max-width: 480px;
   }
@@ -298,7 +305,7 @@ div.home div.customer-care div.customer-care-img img {
 
 @media only screen and (width >=960px) {
   div.home div.home-content {
-    height: 365px;
+    height: calc(100vh - 150px);
   }
 
   div.home div.home-cover {
@@ -309,6 +316,15 @@ div.home div.customer-care div.customer-care-img img {
 
   div.home div.search div.home-search {
     padding: 20px;
-    margin-top: -75px;
   }
+}
+
+.home-site-description span {
+  color: #fff;
+  max-width: 580px;
+  display: block;
+  line-height: 21px;
+  text-shadow: 0 0 21px BLACK;
+  margin-top: 17px;
+  text-align: center;
 }

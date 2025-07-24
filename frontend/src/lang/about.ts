@@ -3,15 +3,6 @@ import * as langHelper from '@/utils/langHelper'
 import env from '@/config/env.config'
 
 const strings = new LocalizedStrings({
-  fr: {
-    TITLE1: `${env.WEBSITE_NAME} - Votre service de location de propriétés`,
-    SUBTITLE1: 'Votre partenaire de confiance pour la location de propriétés',
-    CONTENT1: `Chez ${env.WEBSITE_NAME}, nous comprenons que chaque voyage est unique. Nous nous engageons à fournir à nos clients une sélection diversifiée de propriétés qui répondent à tous les besoins de voyage. Que vous exploriez une ville, que vous vous déplaciez pour affaires ou que vous recherchiez l'aventure, nos services de location de propriétés fiables garantissent que votre aventure commence en toute transparence. Notre mission est de fournir un service client exceptionnel, rendant votre expérience agréable et sans stress. Avec des tarifs compétitifs, une variété de propriétés bien entretenus et une équipe dédiée prête à vous aider, nous nous efforçons d'être votre partenaire de confiance sur la route. Choisissez ${env.WEBSITE_NAME} pour tous vos besoins de location de propriété et découvrez la liberté d'explorer à votre rythme.`,
-    TITLE2: `Pourquoi choisir ${env.WEBSITE_NAME}`,
-    SUBTITLE2: "Découvrez l'excellence à chaque voyage",
-    CONTENT2: "Profitez d'une commodité, d'une fiabilité et d'une valeur inégalées avec notre service de location de propriétés. Des réservations sans effort aux propriétés de haute qualité, nous sommes votre partenaire de voyage de confiance.",
-    FIND_DEAL: 'Trouver une Offre',
-  },
   en: {
     TITLE1: `${env.WEBSITE_NAME} - Your Premier Property Rental Service`,
     SUBTITLE1: 'Your Trusted Partner for Property Rentals',
@@ -21,6 +12,36 @@ const strings = new LocalizedStrings({
     CONTENT2: "Enjoy unmatched convenience, reliability, and value with our premier property rental service. From effortless bookings to high-quality properties, we're your trusted travel partner.",
     FIND_DEAL: 'Find Deal',
   },
+
+  de: {
+    TITLE1: `${env.WEBSITE_NAME} – Ihr erstklassiger Mietservice für Immobilien`,
+    SUBTITLE1: 'Ihr vertrauenswürdiger Partner für Immobilienvermietungen',
+    CONTENT1: `Bei ${env.WEBSITE_NAME} wissen wir, dass jede Reise einzigartig ist. Wir bieten Ihnen eine vielfältige Auswahl an Immobilien, die alle Reisebedürfnisse abdecken. Ob Städtereise, Geschäftsreise oder Abenteuer – mit unserem zuverlässigen Mietservice beginnt Ihre Reise reibungslos. Unsere Mission ist es, exzellenten Kundenservice zu bieten und Ihre Erfahrung angenehm und stressfrei zu gestalten. Mit wettbewerbsfähigen Preisen, gepflegten Immobilien und einem engagierten Team sind wir Ihr zuverlässiger Partner auf Reisen. Wählen Sie ${env.WEBSITE_NAME} für Ihre Mietbedürfnisse und erleben Sie die Freiheit, in Ihrem eigenen Tempo zu reisen.`,
+    TITLE2: `Warum ${env.WEBSITE_NAME} wählen?`,
+    SUBTITLE2: 'Exzellenz auf jeder Reise erleben',
+    CONTENT2: "Genießen Sie unvergleichlichen Komfort, Zuverlässigkeit und Wert mit unserem erstklassigen Mietservice. Von einfacher Buchung bis zu hochwertigen Immobilien – wir sind Ihr vertrauenswürdiger Reisepartner.",
+    FIND_DEAL: 'Angebot finden',
+  },
+
+  es: {
+    TITLE1: `${env.WEBSITE_NAME} - Su servicio de alquiler de propiedades de primer nivel`,
+    SUBTITLE1: 'Su socio de confianza en alquileres de propiedades',
+    CONTENT1: `En ${env.WEBSITE_NAME}, entendemos que cada viaje es único. Estamos comprometidos a ofrecer una amplia selección de propiedades que se adapten a cada necesidad de viaje. Ya sea que explore una ciudad, viaje por negocios o busque aventuras, nuestros servicios confiables aseguran que su experiencia comience sin problemas. Nuestra misión es brindar un servicio al cliente excepcional, haciendo que su experiencia sea placentera y libre de estrés. Con tarifas competitivas, propiedades bien mantenidas y un equipo dedicado listo para ayudarle, aspiramos a ser su socio de confianza en el camino. Elija ${env.WEBSITE_NAME} para todas sus necesidades de alquiler y disfrute de la libertad de explorar a su propio ritmo.`,
+    TITLE2: `¿Por qué elegir ${env.WEBSITE_NAME}?`,
+    SUBTITLE2: 'Viva la excelencia en cada viaje',
+    CONTENT2: "Disfrute de una comodidad, fiabilidad y valor incomparables con nuestro servicio de alquiler de propiedades. Desde reservas fáciles hasta propiedades de alta calidad, somos su socio de confianza en viajes.",
+    FIND_DEAL: 'Buscar oferta',
+  },
+
+  it: {
+    TITLE1: `${env.WEBSITE_NAME} - Il tuo servizio di noleggio immobiliare di prima scelta`,
+    SUBTITLE1: 'Il tuo partner di fiducia per gli affitti',
+    CONTENT1: `Noi di ${env.WEBSITE_NAME} sappiamo che ogni viaggio è unico. Ci impegniamo a offrire una vasta selezione di proprietà per soddisfare ogni esigenza di viaggio. Che tu stia esplorando una città, viaggiando per lavoro o cercando avventura, i nostri affidabili servizi di noleggio ti garantiranno un inizio senza intoppi. La nostra missione è offrire un servizio clienti eccezionale, rendendo la tua esperienza piacevole e senza stress. Con tariffe competitive, proprietà ben tenute e un team dedicato pronto ad assisterti, vogliamo essere il tuo partner di fiducia in viaggio. Scegli ${env.WEBSITE_NAME} per tutte le tue esigenze di noleggio e goditi la libertà di esplorare al tuo ritmo.`,
+    TITLE2: `Perché scegliere ${env.WEBSITE_NAME}`,
+    SUBTITLE2: 'Eccellenza in ogni viaggio',
+    CONTENT2: "Goditi comodità, affidabilità e valore senza pari con il nostro servizio di noleggio. Dalla prenotazione facile a proprietà di alta qualità, siamo il tuo partner di viaggio di fiducia.",
+    FIND_DEAL: 'Trova offerta',
+  }
 })
 
 langHelper.setLanguage(strings)

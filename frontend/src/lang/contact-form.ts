@@ -16,12 +16,26 @@ const strings = new LocalizedStrings({
     SEND: 'Send',
     MESSAGE_SENT: 'Message sent'
   },
-  el: {
-    CONTACT_HEADING: 'Επικοινωνία',
-    SUBJECT: 'Θέμα',
-    MESSAGE: 'Μήνυμα',
-    SEND: 'Στείλετε',
-    MESSAGE_SENT: 'Το μήνυμα στάλθηκε'
+  it: {
+    CONTACT_HEADING: 'Contatto',
+    SUBJECT: 'Oggetto',
+    MESSAGE: 'Messaggio',
+    SEND: 'Invia',
+    MESSAGE_SENT: 'Messaggio inviato'
+  },
+  de: {
+    CONTACT_HEADING: 'Kontakt',
+    SUBJECT: 'Betreff',
+    MESSAGE: 'Nachricht',
+    SEND: 'Senden',
+    MESSAGE_SENT: 'Nachricht gesendet'
+  },
+  es: {
+    CONTACT_HEADING: 'Contacto',
+    SUBJECT: 'Asunto',
+    MESSAGE: 'Mensaje',
+    SEND: 'Enviar',
+    MESSAGE_SENT: 'Mensaje enviado'
   },
 })
 

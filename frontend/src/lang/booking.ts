@@ -5,9 +5,22 @@ const strings = new LocalizedStrings({
   fr: {
     TOTAL: 'Total :',
   },
+  
   en: {
     TOTAL: 'Total:',
   },
+
+  de: {
+    TOTAL: 'Gesamt:',
+  },
+
+  es: {
+    TOTAL: 'Total:',
+  },
+
+  it: {
+    TOTAL: 'Totale:',
+  }
 })
 
 langHelper.setLanguage(strings)

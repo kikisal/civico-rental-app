@@ -81,6 +81,7 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
   //
   // Send confirmation email
   //
+  
   try {
     // generate token and save
     const token = new Token({ user: user._id, token: helper.generateToken() })

@@ -24,6 +24,39 @@ const strings = new LocalizedStrings({
     DELETE_NOTIFICATION: 'Are you sure you want to delete this notification?',
     DELETE_NOTIFICATIONS: 'Are you sure you want to delete these notifications?',
   },
+  it: {
+    EMPTY_LIST: 'Nessuna notifica',
+    VIEW: 'Visualizza',
+    MARK_AS_READ: 'Segna come letta',
+    MARK_AS_UNREAD: 'Segna come non letta',
+    MARK_ALL_AS_READ: 'Segna tutte come lette',
+    MARK_ALL_AS_UNREAD: 'Segna tutte come non lette',
+    DELETE_ALL: 'Elimina tutte',
+    DELETE_NOTIFICATION: 'Sei sicuro di voler eliminare questa notifica?',
+    DELETE_NOTIFICATIONS: 'Sei sicuro di voler eliminare queste notifiche?',
+  },
+  de: {
+    EMPTY_LIST: 'Keine Benachrichtigungen',
+    VIEW: 'Anzeigen',
+    MARK_AS_READ: 'Als gelesen markieren',
+    MARK_AS_UNREAD: 'Als ungelesen markieren',
+    MARK_ALL_AS_READ: 'Alle als gelesen markieren',
+    MARK_ALL_AS_UNREAD: 'Alle als ungelesen markieren',
+    DELETE_ALL: 'Alle löschen',
+    DELETE_NOTIFICATION: 'Möchten Sie diese Benachrichtigung wirklich löschen?',
+    DELETE_NOTIFICATIONS: 'Möchten Sie diese Benachrichtigungen wirklich löschen?',
+  },
+  es: {
+    EMPTY_LIST: 'Sin notificaciones',
+    VIEW: 'Ver',
+    MARK_AS_READ: 'Marcar como leída',
+    MARK_AS_UNREAD: 'Marcar como no leída',
+    MARK_ALL_AS_READ: 'Marcar todas como leídas',
+    MARK_ALL_AS_UNREAD: 'Marcar todas como no leídas',
+    DELETE_ALL: 'Eliminar todas',
+    DELETE_NOTIFICATION: '¿Estás seguro de que deseas eliminar esta notificación?',
+    DELETE_NOTIFICATIONS: '¿Estás seguro de que deseas eliminar estas notificaciones?',
+  }
 })
 
 langHelper.setLanguage(strings)

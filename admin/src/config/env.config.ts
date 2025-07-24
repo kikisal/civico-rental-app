@@ -14,6 +14,18 @@ const LANGUAGES = [
     code: 'en',
     label: 'English',
   },
+  {
+    code: 'it',
+    label: 'Italiano',
+  },
+  {
+    code: 'de',
+    label: "German"
+  },
+  {
+    code: 'es',
+    label: "Spanish"
+  }
 ]
 
 const env = {

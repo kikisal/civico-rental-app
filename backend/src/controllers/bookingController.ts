@@ -164,6 +164,8 @@ export const checkout = async (req: Request, res: Response) => {
     let user: env.User | null
     const { body }: { body: movininTypes.CheckoutPayload } = req
     const { renter } = body
+    
+    console.log(body);
 
     if (!body.booking) {
       throw new Error('Booking missing')
@@ -190,9 +192,13 @@ export const checkout = async (req: Request, res: Response) => {
         ${helper.joinURL(env.FRONTEND_HOST, 'activate')}/?u=${encodeURIComponent(user.id)}&e=${encodeURIComponent(user.email)}&t=${encodeURIComponent(token.token)}<br><br>
         ${i18n.t('REGARDS')}<br></p>`,
       }
-      await mailHelper.sendMail(mailOptions)
+      try {
+        await mailHelper.sendMail(mailOptions);
+      } catch(ex) {
+        console.log("Coulnd't send email to renter: ", ex);
+      }
 
-      body.booking.renter = user.id
+      body.booking.renter = user.id;
     } else {
       user = await User.findById(body.booking.renter)
     }

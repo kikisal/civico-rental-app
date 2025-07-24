@@ -66,6 +66,7 @@
   font-size: 18px;
   font-weight: 500;
   color: #121212;
+  white-space: nowrap;
 }
 /* Device width is greater than or equal to 960px */
 

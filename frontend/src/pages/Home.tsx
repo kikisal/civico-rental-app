@@ -97,20 +97,20 @@ const Home = () => {
 
           <div className="home-title">{strings.WELCOME_LABEL + ` ${env.WEBSITE_NAME}`} </div>
           <div className="home-cover" style={{maxWidth: "700px"}}>{strings.COVER}</div>
+          <div className='home-site-description'><span>{strings.HOME_SITE_DESCRIPTION}</span></div>
           {/* <div className="home-subtitle">{strings.SUBTITLE}</div> */}
 
         </div>
-        (
+        
+        
+        <div className="services">
+          <div>{(
         <div className="search">
           <div className="home-search">
             <SearchForm />
           </div>
-        </div>
-        )
-        
-        <div className="services">
-
-          <h1>{strings.SERVICES_TITLE}</h1>
+        </div>)}</div>
+          <h1 style={{marginTop: "49px"}}>{strings.SERVICES_TITLE}</h1>
 
           <div className="services-boxes">
 
@@ -216,7 +216,7 @@ const Home = () => {
           </div>
         )}
         
-        <div className="home-map">
+        {/* <div className="home-map">
           <Map
             title={strings.MAP_TITLE}
             position={new L.LatLng(env.MAP_LATITUDE, env.MAP_LONGITUDE)}
@@ -227,7 +227,7 @@ const Home = () => {
               setOpenLocationSearchFormDialog(true)
             }}
           />
-        </div>
+        </div> */}
 
         <div className="customer-care">
           <div className="customer-care-wrapper">
