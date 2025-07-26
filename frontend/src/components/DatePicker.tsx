@@ -15,7 +15,6 @@ interface DatePickerProps {
   language?: string
   variant?: TextFieldVariants
   readOnly?: boolean
-  lockRanges: [],
   onChange?: (value: Date | null) => void
   onError?: (error: DateValidationError, value: Date | null) => void
 }
