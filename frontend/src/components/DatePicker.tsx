@@ -53,9 +53,6 @@ const DatePicker = ({
       <MuiDatePicker
         label={label}
         views={['year', 'month', 'day']}
-        shouldDisableDate={(date) => {
-          return false;
-        }}
         value={value}
         readOnly={readOnly}
         onChange={(_value) => {
