@@ -15,6 +15,7 @@ interface DatePickerProps {
   language?: string
   variant?: TextFieldVariants
   readOnly?: boolean
+  lockRanges: [],
   onChange?: (value: Date | null) => void
   onError?: (error: DateValidationError, value: Date | null) => void
 }
@@ -47,12 +48,15 @@ const DatePicker = ({
       setMinDate(undefined)
     }
   }, [minDateValue])
-
+  
   return (
     <LocalizationProvider adapterLocale={language === 'fr' ? fr : enUS} dateAdapter={AdapterDateFns}>
       <MuiDatePicker
         label={label}
         views={['year', 'month', 'day']}
+        shouldDisableDate={(date) => {
+          return false;
+        }}
         value={value}
         readOnly={readOnly}
         onChange={(_value) => {

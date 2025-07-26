@@ -25,7 +25,7 @@ import '@/assets/css/property.css'
 
 const Property = () => {
   const navigate = useNavigate()
-  const location = useLocation()
+  const location = useLocation();
 
   const _minDate = new Date()
   _minDate.setDate(_minDate.getDate() + 1)
@@ -41,7 +41,7 @@ const Property = () => {
   const [to, setTo] = useState<Date>()
   const [minDate, setMinDate] = useState<Date>()
   const [maxDate, setMaxDate] = useState<Date>()
-  const [hideAction, setHideAction] = useState(true)
+  const [hideAction, setHideAction] = useState(false)
   const [language, setLanguage] = useState(env.DEFAULT_LANGUAGE)
   const [priceLabel, setPriceLabel] = useState('')
 
@@ -66,7 +66,7 @@ const Property = () => {
   }, [openImageDialog])
 
   const onLoad = async () => {
-    const { state } = location
+    const { state } = location;
     if (!state) {
       setNoMatch(true)
       return
@@ -112,6 +112,28 @@ const Property = () => {
       setLoading(false)
     }
   }
+
+  	let doRedirect = false;
+
+	useEffect(() => {
+		if (!doRedirect) return;
+
+		setTimeout(() => {
+			navigate("/property", {
+				state: {
+					propertyId: queryParams.get('p'),
+					from: undefined,
+					to: undefined
+				}
+			})
+		});
+	});
+
+	const queryParams = new URLSearchParams(window.location.search);
+	if (queryParams.has("p")) {
+		doRedirect = true;
+		return (<></>);
+	}
 
   return (
     <Layout onLoad={onLoad}>
@@ -202,6 +224,7 @@ const Property = () => {
                             maxDate={maxDate}
                             variant="outlined"
                             required
+                            
                             onChange={(date) => {
                               if (date) {
                                 if (to && to.getTime() <= date.getTime()) {

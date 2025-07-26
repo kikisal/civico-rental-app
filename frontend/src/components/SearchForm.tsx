@@ -23,7 +23,7 @@ const SearchForm = (
     onCancel,
   }: SearchFormProps
 ) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const _minDate = new Date()
   _minDate.setDate(_minDate.getDate() + 1)
@@ -70,13 +70,15 @@ const SearchForm = (
         locationId: location,
         from,
         to
+
       },
-    })
+    });
   }
 
   return (
     <form onSubmit={handleSubmit} className="home-search-form">
-      <FormControl className="location">
+      
+      {/* <FormControl className="location" style={{display: "none"}}>
         <LocationSelectList
           label={commonStrings.LOCATION}
           variant="outlined"
@@ -87,7 +89,7 @@ const SearchForm = (
           value={selectedLocation}
           onChange={handleLocationChange}
         />
-      </FormControl>
+      </FormControl> */}
       <FormControl className="from">
         <DatePicker
           label={commonStrings.FROM}
@@ -95,6 +97,7 @@ const SearchForm = (
           minDate={_minDate}
           variant="outlined"
           required
+          
           onChange={(date) => {
             if (date) {
               const __minDate = new Date(date)

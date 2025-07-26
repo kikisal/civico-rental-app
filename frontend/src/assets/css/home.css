@@ -90,6 +90,7 @@ div.home div.search {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 }
 
 div.home div.search div.home-search {

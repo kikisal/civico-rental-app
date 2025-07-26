@@ -43,8 +43,8 @@ const AppLayout = () => {
   const [refreshKey, setRefreshKey] = useState(0) // refreshKey to check user and notifications when navigating between routes
 
   useEffect(() => {
-    setRefreshKey((prev) => prev + 1)
-  }, [location.pathname])
+    setRefreshKey((prev) => prev + 1);
+  }, [location.pathname]);
 
   return (
     <UserProvider refreshKey={refreshKey}>

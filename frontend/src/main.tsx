@@ -261,13 +261,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 				theme="dark"
 			/>
 		</CssBaseline>
-		{/* <a
-      className="github-fork-ribbon fixed left-bottom"
-      href="https://github.com/aelassas/movinin"
-      data-ribbon="Fork me on GitHub"
-      title="Fork me on GitHub"
-    >
-      Fork me on GitHub
-    </a> */}
 	</ThemeProvider>,
 )
