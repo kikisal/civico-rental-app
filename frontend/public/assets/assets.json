@@ -1,0 +1,14 @@
+{
+    "images": [
+        {
+            "url": "logo.png",
+            "text": null,
+            "backdrop": "#D78376"
+        },
+        {
+            "url": "kitty.jpeg",
+            "text": "KITTY",
+            "backdrop": "#0B0100"
+        }
+    ]
+}

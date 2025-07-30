@@ -21,16 +21,88 @@ import Layout from '@/components/Layout'
 import SearchForm from '@/components/SearchForm'
 import LocationCarrousel from '@/components/LocationCarrousel'
 import TabPanel, { a11yProps } from '@/components/TabPanel'
-import Map from '@/components/Map'
+import * as _GMap from '@/components/Map'; 
+const GMap = _GMap.default;
 import Footer from '@/components/Footer'
 
 import '@/assets/css/home.css';
 
-let currentTimer: any = null;
+import ChevronLeftIcon from  "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+
+type AssetImage = {
+	url: 		string,
+	text: 		string | null,
+	backdrop: 	string | null,
+	image: 		HTMLImageElement | null
+};
+
+type EventFunctionSign = () => void;
+type EventFunctionType = Map<string, EventFunctionSign[]>;
+		
+let currentTimer: any 				  = null;
+let bannerImages: AssetImage[] | null = null;
+let loadingImages	  				  = false;
+let sliderPosition					  = 0;
+
+const loadBannerImages = async (onBannerImageLoaded: EventFunctionSign) => {
+	const promiseFromImgURL = (assetImage: AssetImage) => {
+		return new Promise((res, rej) => {
+			const onload = function() {
+				assetImage.image = img;
+				res(img);
+			}
+
+			const onerror = function() {
+				rej(`Failed fetching image ${assetImage.url}`);
+			}
+
+			const img 	= new Image();
+			img.src 	= location.protocol + "//" + location.host + `/assets/${assetImage.url}`;
+			img.onload  = onload;
+			img.onerror = onerror;
+		});
+	};
+
+	if (bannerImages) {
+		try {
+			onBannerImageLoaded();
+			return true;
+		} catch(ex) {
+			return false;
+		}
+	} else { 
+		if (loadingImages) return false;
+
+		loadingImages = true;
+
+		try {
+			const res  	   = await fetch(location.protocol + "//" + location.host + "/assets/assets.json");
+			const data 	   = await res.json();
+			const promises = [];
+			for (const img of data.images)
+				promises.push(promiseFromImgURL(img));
+			
+			await Promise.all(promises);
+			bannerImages = data.images;
+			onBannerImageLoaded();
+
+			return true;
+		} catch(ex) {
+			return false;
+		}
+	}
+
+	return false;
+}
 
 const Home = () => {
-	const navigate = useNavigate()
-	const roomInfoRef = useRef<HTMLDivElement>(null);
+
+	const navigate 	   					   = useNavigate()
+	const roomInfoRef  					   = useRef<HTMLDivElement>(null);
+	const [_bannerImages, setBannerImages] = useState<AssetImage[]>([]);
+	const sliderImageSetRef 			   = useRef<HTMLDivElement>(null);
 
 	const [countries, setCountries] = useState<movininTypes.CountryInfo[]>([]);
 
@@ -80,10 +152,6 @@ const Home = () => {
 		}
 	};
 
-	const onHomeUnmounting = () => {
-		
-	};
-
 	useEffect(() => {
 		if (!roomInfoRef.current) {
 			if (currentTimer)
@@ -105,39 +173,89 @@ const Home = () => {
 		};
 	}, []);
 
+	const onBannerImageLoaded = () => {
+		console.log("onBannerImageLoaded()", bannerImages);
+		if (bannerImages)
+			setBannerImages(bannerImages);
+	};
+
+	const onSlideLeft = () => {
+		if (!sliderImageSetRef.current || !bannerImages) 
+			return;
+		
+		--sliderPosition;
+
+		if (sliderPosition < 0) 
+			sliderPosition = bannerImages.length - 1;
+
+		sliderImageSetRef.current.style.transform = `translateX(${-sliderPosition * 100}%)`;
+	};
+
+	const onSlideRight = () => {
+		if (!sliderImageSetRef.current || !bannerImages) 
+			return;
+
+		++sliderPosition;
+
+		sliderPosition = sliderPosition % bannerImages.length;
+		sliderImageSetRef.current.style.transform = `translateX(${-sliderPosition * 100}%)`;
+	};
+
+	useEffect(() => {
+		if (!bannerImages) {
+			loadBannerImages(onBannerImageLoaded);		
+			return;
+		}
+		
+		onBannerImageLoaded();
+
+		return () => {
+			sliderPosition = 0;
+		}
+	}, []);
+	
 	return (
 		<Layout onLoad={onLoad} strict={false}>
 			<div className="home">
-
 				<div className="home-content">
-
-					<div className="video">
-						<video
-							id="cover"
-							muted={!env.isSafari}
-							autoPlay={!env.isSafari}
-							loop
-							playsInline
-							disablePictureInPicture
-							onLoadedData={async () => {
-								setVideoLoaded(true)
-							}}
-						>
-							<source src="cover.mp4" type="video/mp4" />
-							<track kind="captions" />
-						</video>
-						{!videoLoaded && (
-							<div className="video-background" />
-						)}
+					<div className="slider-wrapper">
+						<div className="slider-nav-wrapper">
+							<div className="slider-nav-btn" onClick={onSlideLeft}>
+								<ChevronLeftIcon htmlColor='#fff'></ChevronLeftIcon>
+							</div>
+							{/* <div className="slider-image-wrapper"></div> */}
+							<div className="slider-nav-btn" onClick={onSlideRight}>
+								<ChevronRightIcon htmlColor='#fff'></ChevronRightIcon>
+							</div>
+						</div>
+						<div className='slider-image-set' ref={sliderImageSetRef}>
+							{
+								_bannerImages.map(
+									(img, indx) => 
+									<div className="slider-image" style={{left: `${indx * 100}%`}}>
+										{img.text && (<div className="image-text"><span>{img.text}</span></div>)}
+										<div className="image-content"><img alt="Image" src={img.image!.src} style={{backgroundColor: img.backdrop == null ? "#ccc" : img.backdrop}} /></div>
+									</div>
+								)
+							}
+{/* 							
+							<div className="slider-image">
+								<div className="image-text"><span>Text</span></div>
+								<div className="image-content"><img alt="Image"/></div>
+							</div>
+							<div className="slider-image">
+								<div className="image-text"><span>Text</span></div>
+								<div className="image-content"><img alt="Image"/></div>
+							</div> */}
+						</div>
 					</div>
-
-					<div className="home-title">{strings.WELCOME_LABEL + ` ${env.WEBSITE_NAME}`} </div>
+					
+					{/* <div className="home-title">{strings.WELCOME_LABEL + ` ${env.WEBSITE_NAME}`} </div>
 					<div className="home-cover" style={{ maxWidth: "700px" }}>{strings.COVER}</div>
-					<div className='home-site-description'><span>{strings.HOME_SITE_DESCRIPTION}</span></div>
+					<div className='home-site-description'><span>{strings.HOME_SITE_DESCRIPTION}</span></div> */}
 					{/* <div className="home-subtitle">{strings.SUBTITLE}</div> */}
 
 				</div>
-
 
 				<div className="services">
 					<div ref={roomInfoRef}></div>
@@ -147,10 +265,9 @@ const Home = () => {
 								<SearchForm location='6881077a0f398f0c5686da50' />
 							</div>
 						</div>)}</div>
-					<h1 style={{ marginTop: "49px" }}>{strings.SERVICES_TITLE}</h1>
+					{/* <h1 style={{ marginTop: "49px" }}>{strings.SERVICES_TITLE}</h1> */}
 
-					<div className="services-boxes">
-
+					{/* <div className="services-boxes">
 						<div className="services-box">
 							<div className="services-icon-wrapper">
 								<Apartment className="services-icon" />
@@ -211,7 +328,7 @@ const Home = () => {
 							</div>
 						</div>
 
-					</div>
+					</div> */}
 				</div>
 
 				{countries.length > 0 && (
@@ -266,7 +383,7 @@ const Home = () => {
           />
         </div> */}
 
-				<div className="customer-care">
+				{/* <div className="customer-care">
 					<div className="customer-care-wrapper">
 						<div className="customer-care-text">
 							<h1>{strings.CUSTOMER_CARE_TITLE}</h1>
@@ -303,7 +420,7 @@ const Home = () => {
 							<img src="/customer-care.png" alt="" />
 						</div>
 					</div>
-				</div>
+				</div> */}
 				<Footer />
 			</div>
 
