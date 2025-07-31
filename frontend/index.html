@@ -47,6 +47,7 @@
 		}
 
 		.room-card {
+			cursor: pointer;
 			display: grid;
 			grid-template-columns: 1fr 2fr;
 			grid-template-rows: auto auto auto;
@@ -138,7 +139,7 @@
 			background: #fff;
 		}
 
-		.room-bottom .bedrooms {
+		.room-bottom .bedrooms, .bedrooms-count {
 			font-weight: bold;
 		}
 
@@ -176,6 +177,11 @@
 				grid-row: 1;
 			}
 		}
+
+		
+		.room-card:hover .room-description h2 {
+			text-decoration: underline;
+		}
 	</style>
 </head>
 
@@ -188,7 +194,7 @@
 		}
 	</style>
 	<div section-id="room-info" class="hidden">
-		<div class="room-card" data-id="6882286314a2b6d1703c5bcf">
+		<div class="room-card" data-id="6882286314a2b6d1703c5bcf" onclick="_goTo('https://civico46rooms.it/property?p=6882286314a2b6d1703c5bcf')">
 			<div class="room-slider" data-room-id="6882286314a2b6d1703c5bcf">
 				<div class="slider-container" id="slider-6882286314a2b6d1703c5bcf">
 					<img src="https://api.civico46rooms.it/cdn/movinin/properties/6882286314a2b6d1703c5bcf_YrKPmmsw86pT9NapkSh27_1753360483242_1.jpg"
@@ -273,14 +279,14 @@
 
 			<div class="room-bottom">
 				<div>
-					<span class="bedrooms">3 Bedrooms</span><br>
+					<span class="bedrooms-count">3 </span><span class="bedrooms">Bedrooms</span><br>
 					<span class="from-label">from </span><span class="price">€85.00</span>
 				</div>
 				<a target="_blank" class="details-link"
 					href="https://civico46rooms.it/property?p=6882286314a2b6d1703c5bcf">Details</a>
 			</div>
 		</div>
-		<div class="room-card" data-id="68822aa914a2b6d1703c5d71">
+		<div class="room-card" data-id="68822aa914a2b6d1703c5d71" onclick="_goTo('https://civico46rooms.it/property?p=68822aa914a2b6d1703c5d71')">
 			<div class="room-slider" data-room-id="68822aa914a2b6d1703c5d71">
 				<div class="slider-container" id="slider-68822aa914a2b6d1703c5d71">
 					<img src="https://api.civico46rooms.it/cdn/movinin/properties/68822aa914a2b6d1703c5d71_6xO2xEUeNQa1BOnPunI5a_1753361065772_1.jpg"
@@ -359,14 +365,14 @@
 
 			<div class="room-bottom">
 				<div>
-					<span class="bedrooms">2 Bedrooms</span><br>
+					<span class="bedrooms-count">2 </span><span class="bedrooms">Bedrooms</span><br>
 					<span class="from-label">from </span><span class="price">€85.00</span>
 				</div>
 				<a target="_blank" class="details-link"
 					href="https://civico46rooms.it/property?p=68822aa914a2b6d1703c5d71">Details</a>
 			</div>
 		</div>
-		<div class="room-card" data-id="68822bc014a2b6d1703c5e0e">
+		<div class="room-card" data-id="68822bc014a2b6d1703c5e0e" onclick="_goTo('https://civico46rooms.it/property?p=68822bc014a2b6d1703c5e0e')">
 			<div class="room-slider" data-room-id="68822bc014a2b6d1703c5e0e">
 				<div class="slider-container" id="slider-68822bc014a2b6d1703c5e0e">
 					<img src="https://api.civico46rooms.it/cdn/movinin/properties/68822bc014a2b6d1703c5e0e_a2QyoodD6Dw3f3MSjcQAq_1753361344782_1.jpg"
@@ -435,7 +441,7 @@
 			</div>
 
 			<div class="room-description">
-				<h2>Green Room</h2>
+				<h2>Yellow Room</h2>
 				<p>Located 27 km from Piazza Duomo and 15 km from Etnaland, Civico 46 Rooms offers air-conditioned rooms
 					with private bathrooms in Santa Maria di Licodia. This completely non-smoking property is 25 km from
 					Angelo Massimino Stadium.
@@ -453,7 +459,7 @@
 
 			<div class="room-bottom">
 				<div>
-					<span class="bedrooms">2 Bedrooms</span><br>
+					<span class="bedrooms-count">2 </span><span class="bedrooms">Bedrooms</span><br>
 					<span class="from-label">from </span><span class="price">€85.00</span>
 				</div>
 				<a target="_blank" class="details-link"
@@ -461,6 +467,15 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function _goTo(url) {
+			const a = document.createElement('a');
+			a.href = url;
+			a.target = '_blank';
+			document.body.appendChild(a);
+			a.click();
+		}
+	</script>
 	<script type="module" src="/src/main.tsx"></script>
 </body>
 

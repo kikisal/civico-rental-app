@@ -48,6 +48,8 @@ let bannerImages: AssetImage[] | null = null;
 let loadingImages	  				  = false;
 let sliderPosition					  = 0;
 let productTranslations: Map<string, DescriptionMap> | null = null;
+let roomCard: {[key: string]: any} | null = null;
+
 
 const loadBannerImages = async (onBannerImageLoaded: EventFunctionSign) => {
 	const promiseFromImgURL = (assetImage: AssetImage) => {
@@ -107,10 +109,12 @@ const loadTranslations = async () => {
 
 	try {
 		const data = await axiosInstance.get('/api/get-translations').then((res) => res.data);
-		const products = Object.keys(data);
+		const description = data.description;
+		roomCard		  = data.roomCard;
+		const products = Object.keys(description);
 
 		for (const pId of products)
-			productTranslations.set(pId, data[pId]);
+			productTranslations.set(pId, description[pId]);
 
 	} catch(ex) {
 		console.log('loadTranslations() Exception Caught: ', ex);
@@ -140,16 +144,33 @@ const Home = () => {
 			if (!roomsCards) return;
 			// const lang = UserService.
 			const lang = UserService.getLanguage() as string;
+			const _roomCard = roomCard;
 
 			for (const roomCard of roomsCards) {
 				const objId = roomCard.getAttribute('data-id');
 				if (!objId) continue;
 				let desc  = productTranslations!.get(objId);
+
 				if (!desc) continue;
 				const descText = desc[lang];
 
 				const node = roomCard.querySelector('.room-description p') as HTMLParagraphElement;
 				node.innerText = descText;
+
+				if (!_roomCard) 
+					continue;
+
+				const infoText = _roomCard[lang];
+				const bedroomsNode = roomCard.querySelector('.bedrooms') as any;
+				const detailsNode  = roomCard.querySelector('.details-link') as any;
+				const fromNode	   = roomCard.querySelector('.from-label') as any;
+				try {
+					bedroomsNode.innerText  = infoText.BEDROOM_LABEL;
+					detailsNode.innerText   = infoText.DETAILS_LABEL;
+					fromNode.innerText 		= infoText.FROM_LABEL + ' ';
+				} catch(ex) {
+					// ignore
+				}
 			}
 		}
 	}
