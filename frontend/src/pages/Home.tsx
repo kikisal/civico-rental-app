@@ -9,6 +9,7 @@ import {
 	Public,
 	FlashOn,
 	CheckBox,
+	Description,
 } from '@mui/icons-material'
 import L from 'leaflet'
 import * as movininTypes from ':movinin-types'
@@ -29,7 +30,8 @@ import '@/assets/css/home.css';
 
 import ChevronLeftIcon from  "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
+import axiosInstance from '@/services/axiosInstance'
+import * as UserService from '@/services/UserService'
 
 type AssetImage = {
 	url: 		string,
@@ -39,12 +41,13 @@ type AssetImage = {
 };
 
 type EventFunctionSign = () => void;
-type EventFunctionType = Map<string, EventFunctionSign[]>;
+type DescriptionMap = {[key: string]: string};
 		
 let currentTimer: any 				  = null;
 let bannerImages: AssetImage[] | null = null;
 let loadingImages	  				  = false;
 let sliderPosition					  = 0;
+let productTranslations: Map<string, DescriptionMap> | null = null;
 
 const loadBannerImages = async (onBannerImageLoaded: EventFunctionSign) => {
 	const promiseFromImgURL = (assetImage: AssetImage) => {
@@ -97,8 +100,27 @@ const loadBannerImages = async (onBannerImageLoaded: EventFunctionSign) => {
 	return false;
 }
 
-const Home = () => {
+const loadTranslations = async () => {
+	if (productTranslations) return true;
 
+	productTranslations = new Map();
+
+	try {
+		const data = await axiosInstance.get('/api/get-translations').then((res) => res.data);
+		const products = Object.keys(data);
+
+		for (const pId of products)
+			productTranslations.set(pId, data[pId]);
+
+	} catch(ex) {
+		console.log('loadTranslations() Exception Caught: ', ex);
+		return false;
+	}
+
+	return true;
+};
+
+const Home = () => {
 	const navigate 	   					   = useNavigate()
 	const roomInfoRef  					   = useRef<HTMLDivElement>(null);
 	const [_bannerImages, setBannerImages] = useState<AssetImage[]>([]);
@@ -111,6 +133,26 @@ const Home = () => {
 	const [locations, setLocations] = useState<movininTypes.Location[]>([])
 	const [location, setLocation] = useState('')
 	const [videoLoaded, setVideoLoaded] = useState(false)
+	
+	const _loadTranslations = async () => {
+		if (await loadTranslations()) {
+			const roomsCards = document.querySelectorAll('.room-card');
+			if (!roomsCards) return;
+			// const lang = UserService.
+			const lang = UserService.getLanguage() as string;
+
+			for (const roomCard of roomsCards) {
+				const objId = roomCard.getAttribute('data-id');
+				if (!objId) continue;
+				let desc  = productTranslations!.get(objId);
+				if (!desc) continue;
+				const descText = desc[lang];
+
+				const node = roomCard.querySelector('.room-description p') as HTMLParagraphElement;
+				node.innerText = descText;
+			}
+		}
+	}
 
 	const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setTabValue(newValue)
@@ -202,6 +244,8 @@ const Home = () => {
 	};
 
 	useEffect(() => {
+		_loadTranslations();
+
 		if (!bannerImages) {
 			loadBannerImages(onBannerImageLoaded);		
 			return;
