@@ -31,7 +31,8 @@ interface PropertyListProps {
   hidePrice?: boolean
   hideActions?: boolean
   sizeAuto?: boolean
-  onLoad?: movininTypes.DataEvent<movininTypes.Property>
+  onLoad?: movininTypes.DataEvent<movininTypes.Property>,
+  bedCount?: number
 }
 
 const PropertyList = ({
@@ -50,6 +51,7 @@ const PropertyList = ({
   hideActions,
   sizeAuto,
   onLoad,
+  bedCount = 0
 }: PropertyListProps) => {
   const [init, setInit] = useState(true)
   const [loading, setLoading] = useState(false)
@@ -195,6 +197,8 @@ const PropertyList = ({
               hideAgency={hideAgency}
               hidePrice={hidePrice}
               hideActions={hideActions}
+              bedCount={bedCount}
+              disableBedSelection={true}
             />
           ))}
 

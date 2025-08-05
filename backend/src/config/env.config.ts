@@ -532,7 +532,8 @@ export interface Booking extends Document {
   paymentIntentId?: string
   customerId?: string
   expireAt?: Date
-  paypalOrderId?: string
+  paypalOrderId?: string,
+  bedCount?: number
 }
 
 /**

@@ -81,6 +81,10 @@ const bookingSchema = new Schema<env.Booking>(
       type: Date,
       index: { name: BOOKING_EXPIRE_AT_INDEX_NAME, expireAfterSeconds: env.BOOKING_EXPIRE_AT, background: true },
     },
+    bedCount: {
+      type: Number,
+      default: 0
+    },
   },
   {
     timestamps: true,

@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material'
 import validator from 'validator'
 import { format, intervalToDuration } from 'date-fns'
-import { fr, enUS } from 'date-fns/locale'
+import { fr, enUS, it, es, de } from 'date-fns/locale'
 import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
@@ -105,14 +105,33 @@ const Checkout = () => {
   const [openMapDialog, setOpenMapDialog] = useState(false)
   const [payPalLoaded, setPayPalLoaded] = useState(false)
   const [payPalInit, setPayPalInit] = useState(false)
-  const [payPalProcessing, setPayPalProcessing] = useState(false)
+  const [payPalProcessing, setPayPalProcessing] = useState(false);
 
-  const _fr = language === 'fr'
-  const _locale = _fr ? fr : enUS
-  const _format = _fr ? 'eee d LLL yyyy kk:mm' : 'eee, d LLL yyyy, p'
+  const [bedCount, setBedCount] = useState(0);
+
+  const getLocaleFromLanguage = (lang: string) => {
+    switch(lang) {
+      case "it":
+        return it;
+      case "en":
+        return enUS;
+      case "fr":
+        return fr;
+      case "es":
+        return es;
+      case "de":
+        return de;
+      default:
+        return enUS;
+    }
+  }
+
+  const _locale = getLocaleFromLanguage(language);
+  const _format = 'eee, d LLL yyyy, p'
   const bookingDetailHeight = env.AGENCY_IMAGE_HEIGHT + 10
   const days = movininHelper.days(from, to)
-  const daysLabel = from && to && `${helper.getDaysShort(days)} (${movininHelper.capitalize(format(from, _format, { locale: _locale }),)} - ${movininHelper.capitalize(format(to, _format, { locale: _locale }))})`
+  const daysLabelStripe = from && to && `${helper.getDaysShort(days, "it")} (${movininHelper.capitalize(format(from, _format, { locale: it }))} - ${movininHelper.capitalize(format(to, _format, { locale: it }))})`
+  const daysLabel = from && to && `${helper.getDaysShort(days, language)} (${movininHelper.capitalize(format(from, _format, { locale: _locale }))} - ${movininHelper.capitalize(format(to, _format, { locale: _locale }))})`
 
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFullName(e.target.value)
@@ -290,7 +309,8 @@ const Checkout = () => {
         status: movininTypes.BookingStatus.Pending,
         cancellation,
         price: basePrice,
-      }
+        bedCount: bedCount
+      };
 
       //
       // Stripe Payment Gateway
@@ -299,8 +319,8 @@ const Checkout = () => {
       let _sessionId: string | undefined
       if (!payLater) {
         if (env.PAYMENT_GATEWAY === movininTypes.PaymentGateway.Stripe) {
-          const name = movininHelper.truncateString(`${env.WEBSITE_NAME} - ${property.name}`, StripeService.ORDER_NAME_MAX_LENGTH)
-          const _description = `${env.WEBSITE_NAME} - ${property.name} - ${daysLabel} - ${location.name}`
+          const name = movininHelper.truncateString(`${env.WEBSITE_NAME} - ${property.name} - ${bedCount} letti extra`, StripeService.ORDER_NAME_MAX_LENGTH)
+          const _description = `${env.WEBSITE_NAME} - ${property.name} - ${bedCount} letti extra - ${daysLabelStripe} - ${location.name}`
           const description = movininHelper.truncateString(_description, StripeService.ORDER_DESCRIPTION_MAX_LENGTH)
 
           const payload: movininTypes.CreatePaymentPayload = {
@@ -364,7 +384,9 @@ const Checkout = () => {
     const { propertyId } = state
     const { locationId } = state
     const { from: _from } = state
-    const { to: _to } = state
+    const { to: _to } = state;
+    const { bedCount: _bedCount } = state;
+
 
     if (!propertyId || !locationId || !_from || !_to) {
       setNoMatch(true)
@@ -387,8 +409,8 @@ const Checkout = () => {
         return
       }
 
-      const _price = await PaymentService.convertPrice(movininHelper.calculateTotalPrice(_property, _from, _to))
-
+      const _price = await PaymentService.convertPrice(movininHelper.calculateTotalPrice(_property, _from, _to, undefined, env.PRICE_PER_EXTRABED, _bedCount))
+      
       const included = (val: number) => val === 0
 
       setProperty(_property)
@@ -398,6 +420,7 @@ const Checkout = () => {
       setTo(_to)
       setCancellation(included(_property.cancellation))
       setVisible(true)
+      setBedCount(_bedCount);
     } catch (err) {
       helper.error(err)
     }
@@ -430,6 +453,7 @@ const Checkout = () => {
 
                   <PropertyList
                     properties={[property]}
+                    bedCount={bedCount}
                     hideActions
                     hidePrice
                     sizeAuto
@@ -466,7 +490,7 @@ const Checkout = () => {
 
                       <div className="checkout-detail" style={{ height: bookingDetailHeight }}>
                         <span className="checkout-detail-title">{strings.PROPERTY}</span>
-                        <div className="checkout-detail-value">{`${property.name} (${helper.priceLabel(property, language)})`}</div>
+                        <div className="checkout-detail-value">{`${property.name}`}</div>
                       </div>
                       {!env.HIDE_AGENCIES && (
                         <div className="checkout-detail" style={{ height: bookingDetailHeight }}>
@@ -563,7 +587,7 @@ const Checkout = () => {
                           </table>
                         </div>
 
-                        <SocialLogin reloadPage />
+                        {/* <SocialLogin reloadPage /> */}
                       </div>
                     </div>
                   )}

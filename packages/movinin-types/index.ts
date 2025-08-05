@@ -140,7 +140,8 @@ export interface Booking {
   paymentIntentId?: string
   customerId?: string
   expireAt?: Date
-  paypalOrderId?: string
+  paypalOrderId?: string,
+  bedCount?: number
 }
 
 export interface CheckoutPayload {

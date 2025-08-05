@@ -22,7 +22,9 @@ interface PropertyProps {
   sizeAuto?: boolean
   hideAgency?: boolean
   hidePrice?: boolean
-  hideActions?: boolean
+  hideActions?: boolean,
+  bedCount?: number,
+  disableBedSelection?: boolean
 }
 
 const Property = ({
@@ -34,6 +36,8 @@ const Property = ({
   hideAgency,
   hidePrice,
   hideActions,
+  bedCount = 0,
+  disableBedSelection = false
 }: PropertyProps) => {
   const navigate = useNavigate()
 
@@ -84,6 +88,8 @@ const Property = ({
           property={property}
           className="property-info"
           language={language}
+          bedCount={bedCount}
+          disableBedSelection={disableBedSelection}
           // description
         />
       </div>

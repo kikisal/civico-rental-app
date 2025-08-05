@@ -197,8 +197,20 @@ export const getDays = (days: number) => `${strings.PRICE_DAYS_PART_1} ${days} $
  * @param {number} days
  * @returns {string}
  */
-export const getDaysShort = (days: number) => `${days} ${strings.PRICE_DAYS_PART_2}${days > 1 ? 's' : ''}`
+export const getDaysShort = (days: number, language: string = "en") => {
+  const _strings: any = {
+    it: {DAY: "giorno", DAYS: "giorni"},
+    en: {DAY: "day", DAYS: "days"},
+    fr: {DAY: "jour", DAYS: "jours"},
+    es: {DAY: "día", DAYS: "días"},
+    de: {DAY: "Tag", DAYS: "Tage"},
+  };
 
+  let label = _strings[language];
+  if (!label) label = _strings["en"];
+
+  return `${days} ${days > 1 ? label["DAYS"] : label["DAY"]}`;
+}
 /**
  * Get cancellation label.
  *
@@ -335,8 +347,8 @@ export const rentalTermUnit = (term: movininTypes.RentalTerm): string => {
  * @param {string} language
  * @returns {string}
  */
-export const priceLabel = async (property: movininTypes.Property, language: string): Promise<string> => {
-  const _price = await PaymentService.convertPrice(property.price)
+export const priceLabel = async (property: movininTypes.Property, language: string, bedCount: number = 0): Promise<string> => {
+  const _price = await PaymentService.convertPrice(property.price + env.PRICE_PER_EXTRABED * bedCount);
   return `${movininHelper.formatPrice(_price, commonStrings.CURRENCY, language)}/${rentalTermUnit(property.rentalTerm)}`
 }
 

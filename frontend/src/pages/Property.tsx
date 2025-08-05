@@ -58,7 +58,9 @@ const Property = () => {
 	const [maxDate, setMaxDate] = useState<Date>()
 	const [hideAction, setHideAction] = useState(false)
 	const [language, setLanguage] = useState(env.DEFAULT_LANGUAGE)
-	const [priceLabel, setPriceLabel] = useState('')
+	const [priceLabel, setPriceLabel] = useState('');
+
+	const [bedCount, setBedCount] = useState(0);
 
 	useEffect(() => {
 		const src = (_image: string) => movininHelper.joinURL(env.CDN_PROPERTIES, _image)
@@ -116,7 +118,7 @@ const Property = () => {
 
 			if (_property) {
 				setProperty(_property)
-				const _priceLabel = await helper.priceLabel(_property, _language)
+				const _priceLabel = await helper.priceLabel(_property, _language, bedCount)
 				setPriceLabel(_priceLabel)
 			} else {
 				setNoMatch(true)
@@ -212,6 +214,12 @@ const Property = () => {
 										<PropertyInfo
 											property={property}
 											language={language}
+											onBedCountChange={async (value) => {
+												setBedCount(value);
+
+												const _priceLabel = await helper.priceLabel(property, language, value)
+												setPriceLabel(_priceLabel)
+											}}
 										/>
 									</div>
 								</div>
@@ -237,7 +245,8 @@ const Property = () => {
 															propertyId: property._id,
 															locationId: property.location._id,
 															from,
-															to
+															to,
+															bedCount: bedCount
 														}
 													})
 												}}

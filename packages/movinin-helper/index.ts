@@ -319,20 +319,20 @@ export const isFrench = (language?: string) => language === 'fr'
  * @param {?movininTypes.PropertyOptions} [options]
  * @returns {number}
  */
-export const calculateTotalPrice = (property: movininTypes.Property, from: Date, to: Date, options?: movininTypes.PropertyOptions) => {
+export const calculateTotalPrice = (property: movininTypes.Property, from: Date, to: Date, options?: movininTypes.PropertyOptions, pricePerExtraBed: number = 15, bedCount: number = 0) => {
   const now = new Date()
   const _days = days(from, to)
 
-  let _price = 0
+  let dailyPrice = property.price + bedCount * pricePerExtraBed;
 
+  let _price = dailyPrice * _days;
+  
   if (property.rentalTerm === movininTypes.RentalTerm.Monthly) {
-    _price = (property.price * _days) / daysInMonth(now.getMonth(), now.getFullYear())
+    _price = _price / daysInMonth(now.getMonth(), now.getFullYear())
   } else if (property.rentalTerm === movininTypes.RentalTerm.Weekly) {
-    _price = (property.price * _days) / 7
-  } else if (property.rentalTerm === movininTypes.RentalTerm.Daily) {
-    _price = property.price * _days
+    _price = _price / 7
   } else if (property.rentalTerm === movininTypes.RentalTerm.Yearly) {
-    _price = (property.price * _days) / daysInYear(now.getFullYear())
+    _price = _price / daysInYear(now.getFullYear())
   }
 
   if (options) {
@@ -340,7 +340,7 @@ export const calculateTotalPrice = (property: movininTypes.Property, from: Date,
       _price += property.cancellation
     }
   }
-
+  
   return _price
 }
 
