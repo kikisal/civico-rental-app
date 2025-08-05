@@ -161,11 +161,11 @@ const Home = () => {
 					continue;
 
 				const infoText = _roomCard[lang];
-				const bedroomsNode = roomCard.querySelector('.bedrooms') as any;
+				// const bedroomsNode = roomCard.querySelector('.bedrooms') as any;
 				const detailsNode  = roomCard.querySelector('.details-link') as any;
 				const fromNode	   = roomCard.querySelector('.from-label') as any;
 				try {
-					bedroomsNode.innerText  = infoText.BEDROOM_LABEL;
+					// bedroomsNode.innerText  = infoText.BEDROOM_LABEL;
 					detailsNode.innerText   = infoText.DETAILS_LABEL;
 					fromNode.innerText 		= infoText.FROM_LABEL + ' ';
 				} catch(ex) {
