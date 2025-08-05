@@ -131,6 +131,7 @@ const Home = () => {
 	const roomInfoRef  					   = useRef<HTMLDivElement>(null);
 	const [_bannerImages, setBannerImages] = useState<AssetImage[]>([]);
 	const sliderImageSetRef 			   = useRef<HTMLDivElement>(null);
+	const homeContentRef				   = useRef<HTMLDivElement>(null);
 
 	const [countries, setCountries] = useState<movininTypes.CountryInfo[]>([]);
 
@@ -280,11 +281,43 @@ const Home = () => {
 			sliderPosition = 0;
 		}
 	}, []);
+
+	useEffect(() => {
+		const updateBannerHeight = () => {
+			if (!homeContentRef.current) return;
+
+			if (window.innerWidth / window.innerHeight < 1) {
+				const ratio = 1.5;
+				const width = homeContentRef.current.getBoundingClientRect().width;
+				const height = width / ratio;
+				homeContentRef.current.style.height = `${height}px`;	
+			} else {
+				homeContentRef.current.style.height = `calc(100vh - 150px)`;
+			}
+		}
+
+		const onKeyDown = (e: any) => {
+			if (e.key == 'ArrowRight') {
+				onSlideRight();
+			} else if (e.key == "ArrowLeft") {
+				onSlideLeft();
+			}
+		}
+
+		updateBannerHeight();
+
+		window.addEventListener('keydown', onKeyDown);
+		window.addEventListener('resize', updateBannerHeight);
+		return () => {
+			window.removeEventListener('resize', updateBannerHeight);
+			window.removeEventListener('keydown', onKeyDown);
+		}
+	}, []);
 	
 	return (
 		<Layout onLoad={onLoad} strict={false}>
 			<div className="home">
-				<div className="home-content">
+				<div className="home-content" ref={homeContentRef}>
 					<div className="slider-wrapper">
 						<div className="slider-nav-wrapper">
 							<div className="right-gradient"></div>
@@ -307,7 +340,8 @@ const Home = () => {
 										<div className="image-content"><img alt="Image" src={img.image!.src} style={{
 											backgroundColor: img.backdrop == null ? "#ccc" : img.backdrop,
 											borderRadius: img.radius ? img.radius : "0",
-											height: `${(100 - (img.margin ? img.margin : 0))}%`
+											height: `${(100 - (img.margin ? img.margin : 0))}%`,
+											width: `${window.innerWidth/window.innerHeight < 1 ? 100 : "auto"}%`
 										}} /></div>
 									</div>
 								)
