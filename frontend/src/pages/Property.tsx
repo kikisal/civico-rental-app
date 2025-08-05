@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
-  Button,
-  FormControl,
+	Button,
+	FormControl,
 } from '@mui/material'
 import * as movininTypes from ':movinin-types'
 import * as movininHelper from ':movinin-helper'
@@ -23,97 +23,112 @@ import Progress from '@/components/Progress'
 
 import '@/assets/css/property.css'
 
+function getTextByLang(lang: string, text: string) {
+	const parts = text.split(/\n(?=[a-z]{2}\n)/g);
+	const map: any = {};
+
+	for (const part of parts) {
+		const match = part.match(/^([a-z]{2})\n([\s\S]*)$/);
+		if (match) {
+			const [, code, content] = match;
+			map[code] = content.trim();
+		}
+	}
+
+	return map[lang] || null;
+}
+
 const Property = () => {
-  const navigate = useNavigate()
-  const location = useLocation();
+	const navigate = useNavigate()
+	const location = useLocation();
 
-  const _minDate = new Date()
-  _minDate.setDate(_minDate.getDate() + 1)
+	const _minDate = new Date()
+	_minDate.setDate(_minDate.getDate() + 1)
 
-  const [loading, setLoading] = useState(false)
-  const [noMatch, setNoMatch] = useState(false)
-  const [property, setProperty] = useState<movininTypes.Property>()
-  const [image, setImage] = useState('')
-  const [images, setImages] = useState<string[]>([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [openImageDialog, setOpenImageDialog] = useState(false)
-  const [from, setFrom] = useState<Date>()
-  const [to, setTo] = useState<Date>()
-  const [minDate, setMinDate] = useState<Date>()
-  const [maxDate, setMaxDate] = useState<Date>()
-  const [hideAction, setHideAction] = useState(false)
-  const [language, setLanguage] = useState(env.DEFAULT_LANGUAGE)
-  const [priceLabel, setPriceLabel] = useState('')
+	const [loading, setLoading] = useState(false)
+	const [noMatch, setNoMatch] = useState(false)
+	const [property, setProperty] = useState<movininTypes.Property>()
+	const [image, setImage] = useState('')
+	const [images, setImages] = useState<string[]>([])
+	const [currentIndex, setCurrentIndex] = useState(0)
+	const [openImageDialog, setOpenImageDialog] = useState(false)
+	const [from, setFrom] = useState<Date>()
+	const [to, setTo] = useState<Date>()
+	const [minDate, setMinDate] = useState<Date>()
+	const [maxDate, setMaxDate] = useState<Date>()
+	const [hideAction, setHideAction] = useState(false)
+	const [language, setLanguage] = useState(env.DEFAULT_LANGUAGE)
+	const [priceLabel, setPriceLabel] = useState('')
 
-  useEffect(() => {
-    const src = (_image: string) => movininHelper.joinURL(env.CDN_PROPERTIES, _image)
+	useEffect(() => {
+		const src = (_image: string) => movininHelper.joinURL(env.CDN_PROPERTIES, _image)
 
-    if (property) {
-      const _image = src(property.image)
-      setImage(_image)
-      const _images = property.images ? property.images.map(src) : []
-      const __images = [_image, ..._images]
-      setImages(__images)
-    }
-  }, [property])
+		if (property) {
+			const _image = src(property.image)
+			setImage(_image)
+			const _images = property.images ? property.images.map(src) : []
+			const __images = [_image, ..._images]
+			setImages(__images)
+		}
+	}, [property])
 
-  useEffect(() => {
-    if (openImageDialog) {
-      document.body.classList.add('stop-scrolling')
-    } else {
-      document.body.classList.remove('stop-scrolling')
-    }
-  }, [openImageDialog])
+	useEffect(() => {
+		if (openImageDialog) {
+			document.body.classList.add('stop-scrolling')
+		} else {
+			document.body.classList.remove('stop-scrolling')
+		}
+	}, [openImageDialog])
 
-  const onLoad = async () => {
-    const { state } = location;
-    if (!state) {
-      setNoMatch(true)
-      return
-    }
-    const { propertyId } = state
-    const { from: _from } = state
-    const { to: _to } = state
+	const onLoad = async () => {
+		const { state } = location;
+		if (!state) {
+			setNoMatch(true)
+			return
+		}
+		const { propertyId } = state
+		const { from: _from } = state
+		const { to: _to } = state
 
-    if (!propertyId) {
-      setNoMatch(true)
-      return
-    }
+		if (!propertyId) {
+			setNoMatch(true)
+			return
+		}
 
-    if (_from || _to) {
-      setHideAction(false)
-    }
+		if (_from || _to) {
+			setHideAction(false)
+		}
 
-    setLoading(true)
-    const _language = UserService.getLanguage()
-    setLanguage(_language)
-    setFrom(_from || undefined)
-    setTo(_to || undefined)
-    setMinDate(_from || undefined)
-    if (_to) {
-      const _maxDate = new Date(_to)
-      _maxDate.setDate(_maxDate.getDate() - 1)
-      setMaxDate(_maxDate)
-    }
+		setLoading(true)
+		const _language = UserService.getLanguage()
+		setLanguage(_language)
+		setFrom(_from || undefined)
+		setTo(_to || undefined)
+		setMinDate(_from || undefined)
+		if (_to) {
+			const _maxDate = new Date(_to)
+			_maxDate.setDate(_maxDate.getDate() - 1)
+			setMaxDate(_maxDate)
+		}
 
-    try {
-      const _property = await PropertyService.getProperty(propertyId)
+		try {
+			const _property = await PropertyService.getProperty(propertyId)
 
-      if (_property) {
-        setProperty(_property)
-        const _priceLabel = await helper.priceLabel(_property, _language)
-        setPriceLabel(_priceLabel)
-      } else {
-        setNoMatch(true)
-      }
-    } catch (err) {
-      helper.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
+			if (_property) {
+				setProperty(_property)
+				const _priceLabel = await helper.priceLabel(_property, _language)
+				setPriceLabel(_priceLabel)
+			} else {
+				setNoMatch(true)
+			}
+		} catch (err) {
+			helper.error(err)
+		} finally {
+			setLoading(false)
+		}
+	}
 
-  	let doRedirect = false;
+	let doRedirect = false;
 
 	useEffect(() => {
 		if (!doRedirect) return;
@@ -127,7 +142,7 @@ const Property = () => {
 				}
 			})
 		});
-	});
+	});	
 
 	const queryParams = new URLSearchParams(window.location.search);
 	if (queryParams.has("p")) {
@@ -135,175 +150,186 @@ const Property = () => {
 		return (<></>);
 	}
 
-  return (
-    <Layout onLoad={onLoad}>
-      {
-        !loading && property && image
-        && (
-          <>
-            <div className="main-page">
-              <div className="property-card">
-                <div className="property">
-                  <div className="images-container">
-                    {/* Main image */}
-                    <div className="main-image">
-                      <img
-                        className="main-image"
-                        alt=""
-                        src={image}
-                        onClick={() => setOpenImageDialog(true)}
-                      />
-                    </div>
+	let selectedDescription = "";
+	if (property) {
+		const tempDiv 		= document.createElement('div');
+		tempDiv.innerHTML 	= property.description;
 
-                    {/* Additional images */}
-                    <div className="images">
-                      {
-                        images.map((_image, index) => (
-                          <div
-                            key={_image}
-                            className={`image${currentIndex === index ? ' selected' : ''}`}
-                            onClick={() => {
-                              setCurrentIndex(index)
-                              setImage(_image)
-                            }}
-                            role="button"
-                            tabIndex={0}
-                            aria-label="image"
-                          >
-                            <img alt="" className="image" src={_image} />
-                          </div>
-                        ))
-                      }
-                    </div>
-                  </div>
+		selectedDescription = getTextByLang(language, tempDiv.innerText);
+		if (!selectedDescription) {
+			selectedDescription = property.description;
+		}
+	}
 
-                  {/* Property info */}
-                  <div className="right-panel">
-                    <div className="right-panel-header">
-                      <div className="name"><h2>{property.name}</h2></div>
-                      {priceLabel && <div className="price">{priceLabel}</div>}
-                    </div>
-                    <PropertyInfo
-                      property={property}
-                      language={language}
-                    />
-                  </div>
-                </div>
+	return (
+		<Layout onLoad={onLoad}>
+			{
+				!loading && property && image
+				&& (
+					<>
+						<div className="main-page">
+							<div className="property-card">
+								<div className="property">
+									<div className="images-container">
+										{/* Main image */}
+										<div className="main-image">
+											<img
+												className="main-image"
+												alt=""
+												src={image}
+												onClick={() => setOpenImageDialog(true)}
+											/>
+										</div>
 
-                {/* Property description */}
-                <div className="description">
-                  <div dangerouslySetInnerHTML={{ __html: property.description }} />
-                </div>
+										{/* Additional images */}
+										<div className="images">
+											{
+												images.map((_image, index) => (
+													<div
+														key={_image}
+														className={`image${currentIndex === index ? ' selected' : ''}`}
+														onClick={() => {
+															setCurrentIndex(index)
+															setImage(_image)
+														}}
+														role="button"
+														tabIndex={0}
+														aria-label="image"
+													>
+														<img alt="" className="image" src={_image} />
+													</div>
+												))
+											}
+										</div>
+									</div>
 
-                <div className="property-footer">
-                  {env.HIDE_AGENCIES ? <div /> : <AgencyBadge agency={property.agency} />}
+									{/* Property info */}
+									<div className="right-panel">
+										<div className="right-panel-header">
+											<div className="name"><h2>{property.name}</h2></div>
+											{priceLabel && <div className="price">{priceLabel}</div>}
+										</div>
+										<PropertyInfo
+											property={property}
+											language={language}
+										/>
+									</div>
+								</div>
 
-                  {
-                    !hideAction
-                    && (
-                      <form
-                        className="action"
-                        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                          e.preventDefault()
+								{/* Property description */}
+								<div className="description">
+									<div dangerouslySetInnerHTML={{ __html: selectedDescription }} />
+								</div>
 
-                          navigate('/checkout', {
-                            state: {
-                              propertyId: property._id,
-                              locationId: property.location._id,
-                              from,
-                              to
-                            }
-                          })
-                        }}
-                      >
-                        <FormControl className="from">
-                          <DatePicker
-                            label={commonStrings.FROM}
-                            value={from}
-                            minDate={new Date()}
-                            maxDate={maxDate}
-                            variant="outlined"
-                            required
-                            
-                            onChange={(date) => {
-                              if (date) {
-                                if (to && to.getTime() <= date.getTime()) {
-                                  setTo(undefined)
-                                }
+								<div className="property-footer">
+									{env.HIDE_AGENCIES ? <div /> : <AgencyBadge agency={property.agency} />}
 
-                                const __minDate = new Date(date)
-                                __minDate.setDate(date.getDate() + 1)
-                                setMinDate(__minDate)
-                              } else {
-                                setMinDate(_minDate)
-                              }
+									{
+										!hideAction
+										&& (
+											<form
+												className="action"
+												onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+													e.preventDefault()
 
-                              setFrom(date || undefined)
-                            }}
-                            language={UserService.getLanguage()}
-                          />
-                        </FormControl>
-                        <FormControl className="to">
-                          <DatePicker
-                            label={commonStrings.TO}
-                            value={to}
-                            minDate={minDate}
-                            variant="outlined"
-                            required
-                            onChange={(date) => {
-                              if (date) {
-                                setTo(date)
-                                const _maxDate = new Date(date)
-                                _maxDate.setDate(_maxDate.getDate() - 1)
-                                setMaxDate(_maxDate)
-                              } else {
-                                setTo(undefined)
-                                setMaxDate(undefined)
-                              }
-                            }}
-                            language={UserService.getLanguage()}
-                          />
-                        </FormControl>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          className="btn-action btn-book"
-                        >
-                          {strings.BOOK}
-                        </Button>
-                      </form>
-                    )
-                  }
+													navigate('/checkout', {
+														state: {
+															propertyId: property._id,
+															locationId: property.location._id,
+															from,
+															to
+														}
+													})
+												}}
+											>
+												<FormControl className="from">
+													<DatePicker
+														label={commonStrings.FROM}
+														value={from}
+														minDate={new Date()}
+														maxDate={maxDate}
+														variant="outlined"
+														required
 
-                </div>
+														onChange={(date) => {
+															if (date) {
+																if (to && to.getTime() <= date.getTime()) {
+																	setTo(undefined)
+																}
 
-              </div>
+																const __minDate = new Date(date)
+																__minDate.setDate(date.getDate() + 1)
+																setMinDate(__minDate)
+															} else {
+																setMinDate(_minDate)
+															}
 
-              {
-                openImageDialog
-                && (
-                  <ImageViewer
-                    src={images}
-                    currentIndex={currentIndex}
-                    closeOnClickOutside
-                    title={property.name}
-                    onClose={() => {
-                      setOpenImageDialog(false)
-                    }}
-                  />
-                )
-              }
-            </div>
+															setFrom(date || undefined)
+														}}
+														language={UserService.getLanguage()}
+													/>
+												</FormControl>
+												<FormControl className="to">
+													<DatePicker
+														label={commonStrings.TO}
+														value={to}
+														minDate={minDate}
+														variant="outlined"
+														required
+														onChange={(date) => {
+															if (date) {
+																setTo(date)
+																const _maxDate = new Date(date)
+																_maxDate.setDate(_maxDate.getDate() - 1)
+																setMaxDate(_maxDate)
+															} else {
+																setTo(undefined)
+																setMaxDate(undefined)
+															}
+														}}
+														language={UserService.getLanguage()}
+													/>
+												</FormControl>
+												<Button
+													type="submit"
+													variant="contained"
+													className="btn-action btn-book"
+												>
+													{strings.BOOK}
+												</Button>
+											</form>
+										)
+									}
 
-            <Footer />
-          </>
-        )
-      }
+								</div>
 
-      {loading && <Progress />}
-      {noMatch && <NoMatch hideHeader />}
-    </Layout>
-  )
+							</div>
+
+							{
+								openImageDialog
+								&& (
+									<ImageViewer
+										src={images}
+										currentIndex={currentIndex}
+										closeOnClickOutside
+										title={property.name}
+										onClose={() => {
+											setOpenImageDialog(false)
+										}}
+									/>
+								)
+							}
+						</div>
+
+						<Footer />
+					</>
+				)
+			}
+
+			{loading && <Progress />}
+			{noMatch && <NoMatch hideHeader />}
+		</Layout>
+	)
 }
 
 export default Property
