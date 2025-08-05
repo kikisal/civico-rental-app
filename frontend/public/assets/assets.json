@@ -8,11 +8,11 @@
             "margin": 10
         },
         {
-            "url": "portone.png",
+            "url": "portone.jpg",
             "text": null,
-            "backdrop": "#ebe2d6",
-            "radius": "10px",
-            "margin": 10
+            "backdrop": "#77927E",
+            "radius": "0",
+            "margin": 0
         }
     ]
 }
