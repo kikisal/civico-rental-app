@@ -3,12 +3,16 @@
         {
             "url": "logo.png",
             "text": null,
-            "backdrop": "#D78376"
+            "backdrop": "#c1a98b",
+            "radius": "10px",
+            "margin": 10
         },
         {
-            "url": "kitty.jpeg",
-            "text": "KITTY",
-            "backdrop": "#0B0100"
+            "url": "contact-logo.png",
+            "text": null,
+            "backdrop": "#c1a98b",
+            "radius": "10px",
+            "margin": 20
         }
     ]
 }

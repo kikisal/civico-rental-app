@@ -37,7 +37,9 @@ type AssetImage = {
 	url: 		string,
 	text: 		string | null,
 	backdrop: 	string | null,
-	image: 		HTMLImageElement | null
+	image: 		HTMLImageElement | null,
+	radius?: 	string | null,
+	margin?:	number
 };
 
 type EventFunctionSign = () => void;
@@ -285,6 +287,9 @@ const Home = () => {
 				<div className="home-content">
 					<div className="slider-wrapper">
 						<div className="slider-nav-wrapper">
+							<div className="right-gradient"></div>
+							<div className="left-gradient"></div>
+							
 							<div className="slider-nav-btn" onClick={onSlideLeft}>
 								<ChevronLeftIcon htmlColor='#fff'></ChevronLeftIcon>
 							</div>
@@ -297,9 +302,13 @@ const Home = () => {
 							{
 								_bannerImages.map(
 									(img, indx) => 
-									<div className="slider-image" style={{left: `${indx * 100}%`}}>
+									<div className="slider-image" style={{left: `${indx * 100}%`, background: img.backdrop ? img.backdrop : "none"}}>
 										{img.text && (<div className="image-text"><span>{img.text}</span></div>)}
-										<div className="image-content"><img alt="Image" src={img.image!.src} style={{backgroundColor: img.backdrop == null ? "#ccc" : img.backdrop}} /></div>
+										<div className="image-content"><img alt="Image" src={img.image!.src} style={{
+											backgroundColor: img.backdrop == null ? "#ccc" : img.backdrop,
+											borderRadius: img.radius ? img.radius : "0",
+											height: `${(100 - (img.margin ? img.margin : 0))}%`
+										}} /></div>
 									</div>
 								)
 							}
