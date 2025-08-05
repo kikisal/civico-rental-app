@@ -55,14 +55,14 @@ const CheckoutSession = () => {
               noMatch
                 ? <NoMatch hideHeader />
                 : (
-                  success && bookingId && (
+                  success && bookingId ? (
                     <CheckoutStatus
                       bookingId={bookingId}
                       language={UserService.getLanguage()}
                       status={success ? 'success' : 'error'}
                       className="status"
                     />
-                  )
+                  ) : (<span>Something went wrong, contact us on whatsapp to follow up with the order: +39 392 1841604 or +39 342 6377140 or send us an email to civico46rooms@gmail.com</span>)
                 )
             )
         }
