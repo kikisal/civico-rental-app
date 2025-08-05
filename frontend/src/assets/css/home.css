@@ -451,6 +451,7 @@ div.home div.customer-care div.customer-care-img img {
 	background: -moz-linear-gradient(270deg, rgba(0, 0, 0, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 	background: linear-gradient(270deg, rgba(0, 0, 0, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#FFFFFF", GradientType=0);
+	right: 0;
 }
 
 .left-gradient {
@@ -459,4 +460,5 @@ div.home div.customer-care div.customer-care-img img {
 	background: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#FFFFFF", GradientType=1);	
+	left: 0;
 }
