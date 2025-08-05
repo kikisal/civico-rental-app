@@ -3,14 +3,14 @@
         {
             "url": "logo.png",
             "text": null,
-            "backdrop": "#c1a98b",
+            "backdrop": "#ebe2d6",
             "radius": "10px",
             "margin": 10
         },
         {
             "url": "contact-logo.png",
             "text": null,
-            "backdrop": "#c1a98b",
+            "backdrop": "#ebe2d6",
             "radius": "10px",
             "margin": 20
         }
