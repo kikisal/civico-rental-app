@@ -283,6 +283,20 @@ const Home = () => {
 	}, []);
 
 	useEffect(() => {
+		let seekIntervalObj: any = null;
+
+		if (!homeContentRef.current) {
+			const seekComponent = () => {
+				if (homeContentRef.current) {
+					clearInterval(seekIntervalObj);
+					seekIntervalObj = null;
+					updateBannerHeight();
+				}
+			};
+
+			seekIntervalObj = setInterval(seekComponent, 500);
+		}
+
 		const updateBannerHeight = () => {
 			if (!homeContentRef.current) return;
 
@@ -311,6 +325,10 @@ const Home = () => {
 		return () => {
 			window.removeEventListener('resize', updateBannerHeight);
 			window.removeEventListener('keydown', onKeyDown);
+			if (seekIntervalObj) {
+				clearInterval(seekIntervalObj);
+				seekIntervalObj = null;
+			}
 		}
 	}, []);
 	
