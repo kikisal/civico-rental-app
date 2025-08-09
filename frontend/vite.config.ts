@@ -41,14 +41,14 @@ export default ({ mode }: { mode: string }) => {
     server: {
       host: '0.0.0.0',
       port: Number.parseInt(process.env.VITE_PORT || '3004', 10),
-      allowedHosts: ['civico46rooms.it'],
+      allowedHosts: ['civico46rooms.it', '192.168.1.216'],
       watch: {
         usePolling: true,
         interval: 500,
       },
       hmr: {
         protocol: 'ws',
-        host: process.env.VITE_HMR_HOST || 'localhost',
+        host: process.env.VITE_HMR_HOST || '192.168.1.216',
         port: Number.parseInt(process.env.VITE_HMR_PORT || '8081', 10),
         clientPort: Number.parseInt(process.env.VITE_HMR_CLIENT_PORT || '8081', 10),
       },

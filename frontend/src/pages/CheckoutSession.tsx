@@ -11,8 +11,15 @@ import CheckoutStatus from '@/components/CheckoutStatus'
 
 import '@/assets/css/checkout-session.css'
 
+function queryParam(key: string) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key);
+}
+
 const CheckoutSession = () => {
-  const { sessionId } = useParams()
+  const { sessionId } = useParams();
+  const wasAuthenticated = queryParam("authenticated") === 'true' ? true : false;
+
   const [bookingId, setBookingId] = useState('')
   const [loading, setLoading] = useState(true)
   const [noMatch, setNoMatch] = useState(false)
@@ -26,14 +33,15 @@ const CheckoutSession = () => {
     if (sessionId) {
       const checkSession = async () => {
         try {
-          setLoading(true)
-          const status = await StripeService.checkCheckoutSession(sessionId)
-
-          const _bookingId = await BookingService.getBookingId(sessionId)
+          setLoading(true);
+          const status = await StripeService.checkCheckoutSession(sessionId);
+          const _bookingId = await BookingService.getBookingId(sessionId);
+          
           setBookingId(_bookingId);
 
-          setNoMatch(status === 204);
-          setSuccess(status === 200);
+          // setNoMatch(status === 204 );
+          setNoMatch(false);
+          setSuccess(status === 200 || status === 204);
         } catch {
           setSuccess(false)
         } finally {
@@ -43,7 +51,7 @@ const CheckoutSession = () => {
 
       checkSession()
     }
-  }, [sessionId])
+  }, [sessionId]);
 
   return (
     <Layout>
@@ -58,6 +66,7 @@ const CheckoutSession = () => {
                   success && bookingId ? (
                     <CheckoutStatus
                       bookingId={bookingId}
+                      wasAuthenticated={wasAuthenticated}
                       language={UserService.getLanguage()}
                       status={success ? 'success' : 'error'}
                       className="status"

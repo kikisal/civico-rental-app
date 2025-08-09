@@ -331,6 +331,7 @@ const Checkout = () => {
             name,
             description,
             customerName: (!authenticated ? renter?.fullName : user?.fullName) as string,
+            authenticated
           }
           const res = await StripeService.createCheckoutSession(payload)
           setClientSecret(res.clientSecret)
@@ -350,16 +351,16 @@ const Checkout = () => {
         payPal: env.PAYMENT_GATEWAY === movininTypes.PaymentGateway.PayPal,
       }
 
-      const { status, bookingId: _bookingId } = await BookingService.checkout(payload)
-      setLoading(false)
+      const { status, bookingId: _bookingId } = await BookingService.checkout(payload);
+      setLoading(false);
 
       if (status === 200) {
         if (payLater) {
           setVisible(false)
           setSuccess(true)
         }
-        setBookingId(_bookingId)
-        setSessionId(_sessionId)
+        setBookingId(_bookingId);
+        setSessionId(_sessionId);
       } else {
         helper.error()
       }

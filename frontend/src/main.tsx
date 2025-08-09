@@ -48,6 +48,7 @@ import { strings as tosStrings } from '@/lang/tos'
 import '@/assets/css/common.css'
 import '@/assets/css/index.css'
 
+
 if (env.isProduction) {
 	disableDevTools()
 }

@@ -22,6 +22,7 @@ import Footer from '@/components/Footer'
 import Progress from '@/components/Progress'
 
 import '@/assets/css/property.css'
+import BookingCalendar from '@/components/booking-calendar/BookingCalendar'
 
 function getTextByLang(lang: string, text: string) {
 	const parts = text.split(/\n(?=[a-z]{2}\n)/g);
@@ -59,6 +60,7 @@ const Property = () => {
 	const [hideAction, setHideAction] = useState(false)
 	const [language, setLanguage] = useState(env.DEFAULT_LANGUAGE)
 	const [priceLabel, setPriceLabel] = useState('');
+	const [selectedDates, setSelectedDates] = useState<{start: string | null, end: string | null}>({ start: null, end: null });
 
 	const [bedCount, setBedCount] = useState(0);
 
@@ -163,6 +165,24 @@ const Property = () => {
 		}
 	}
 
+	const handleOnBooking = (bookingData: { roomId: string; startDate: string; endDate: string; totalNights: number }) => {
+		// console.log('handleOnBooking()', bookingData);
+
+		navigate('/checkout', {
+			state: {
+				propertyId: property!._id,
+				locationId: property!.location._id,
+				from: new Date(bookingData.startDate),
+				to: new Date(bookingData.endDate),
+				bedCount: bedCount
+			}
+		});
+	}
+
+	const handleDateSelect = (startDate: string | null, endDate: string | null) => {
+    	setSelectedDates({ start: startDate, end: endDate });
+	};
+
 	return (
 		<Layout onLoad={onLoad}>
 			{
@@ -230,84 +250,93 @@ const Property = () => {
 								</div>
 
 								<div className="property-footer">
-									{env.HIDE_AGENCIES ? <div /> : <AgencyBadge agency={property.agency} />}
+									{/* {env.HIDE_AGENCIES ? <div /> : <AgencyBadge agency={property.agency} />} */}
 
 									{
 										!hideAction
-										&& (
-											<form
-												className="action"
-												onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-													e.preventDefault()
+										// && (
+										// 	<form
+										// 		className="action"
+										// 		onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+										// 			e.preventDefault()
 
-													navigate('/checkout', {
-														state: {
-															propertyId: property._id,
-															locationId: property.location._id,
-															from,
-															to,
-															bedCount: bedCount
-														}
-													})
-												}}
-											>
-												<FormControl className="from">
-													<DatePicker
-														label={commonStrings.FROM}
-														value={from}
-														minDate={new Date()}
-														maxDate={maxDate}
-														variant="outlined"
-														required
+										// 			navigate('/checkout', {
+										// 				state: {
+										// 					propertyId: property._id,
+										// 					locationId: property.location._id,
+										// 					from,
+										// 					to,
+										// 					bedCount: bedCount
+										// 				}
+										// 			})
+										// 		}}
+										// 	>
+										// 		<FormControl className="from">
+										// 			<DatePicker
+										// 				label={commonStrings.FROM}
+										// 				value={from}
+										// 				minDate={new Date()}
+										// 				maxDate={maxDate}
+										// 				variant="outlined"
+										// 				required
 
-														onChange={(date) => {
-															if (date) {
-																if (to && to.getTime() <= date.getTime()) {
-																	setTo(undefined)
-																}
+										// 				onChange={(date) => {
+										// 					if (date) {
+										// 						if (to && to.getTime() <= date.getTime()) {
+										// 							setTo(undefined)
+										// 						}
 
-																const __minDate = new Date(date)
-																__minDate.setDate(date.getDate() + 1)
-																setMinDate(__minDate)
-															} else {
-																setMinDate(_minDate)
-															}
+										// 						const __minDate = new Date(date)
+										// 						__minDate.setDate(date.getDate() + 1)
+										// 						setMinDate(__minDate)
+										// 					} else {
+										// 						setMinDate(_minDate)
+										// 					}
 
-															setFrom(date || undefined)
-														}}
-														language={UserService.getLanguage()}
-													/>
-												</FormControl>
-												<FormControl className="to">
-													<DatePicker
-														label={commonStrings.TO}
-														value={to}
-														minDate={minDate}
-														variant="outlined"
-														required
-														onChange={(date) => {
-															if (date) {
-																setTo(date)
-																const _maxDate = new Date(date)
-																_maxDate.setDate(_maxDate.getDate() - 1)
-																setMaxDate(_maxDate)
-															} else {
-																setTo(undefined)
-																setMaxDate(undefined)
-															}
-														}}
-														language={UserService.getLanguage()}
-													/>
-												</FormControl>
-												<Button
-													type="submit"
-													variant="contained"
-													className="btn-action btn-book"
-												>
-													{strings.BOOK}
-												</Button>
-											</form>
-										)
+										// 					setFrom(date || undefined)
+										// 				}}
+										// 				language={UserService.getLanguage()}
+										// 			/>
+										// 		</FormControl>
+										// 		<FormControl className="to">
+										// 			<DatePicker
+										// 				label={commonStrings.TO}
+										// 				value={to}
+										// 				minDate={minDate}
+										// 				variant="outlined"
+										// 				required
+										// 				onChange={(date) => {
+										// 					if (date) {
+										// 						setTo(date)
+										// 						const _maxDate = new Date(date)
+										// 						_maxDate.setDate(_maxDate.getDate() - 1)
+										// 						setMaxDate(_maxDate)
+										// 					} else {
+										// 						setTo(undefined)
+										// 						setMaxDate(undefined)
+										// 					}
+										// 				}}
+										// 				language={UserService.getLanguage()}
+										// 			/>
+										// 		</FormControl>
+										// 		<Button
+										// 			type="submit"
+										// 			variant="contained"
+										// 			className="btn-action btn-book"
+										// 		>
+										// 			{strings.BOOK}
+										// 		</Button>
+										// 	</form>
+										// )
+										&& (<BookingCalendar
+										roomId={property?.bookingRoomId}
+										roomName={property?.name}
+										locale={language}
+										initialMonth={new Date()}
+										onBooking={handleOnBooking}
+										onDateSelect={handleDateSelect}
+										className='booking-calendar'
+										></BookingCalendar>)
 									}
 
 								</div>

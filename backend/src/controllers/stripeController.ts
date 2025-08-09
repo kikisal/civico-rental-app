@@ -29,7 +29,8 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
       name,
       description,
       customerName,
-    }: movininTypes.CreatePaymentPayload = req.body
+      authenticated
+    }: movininTypes.CreatePaymentPayload = req.body;
 
     //
     // 1. Create the customer if he does not already exist
@@ -66,7 +67,7 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
         },
       ],
       mode: 'payment',
-      return_url: `${helper.trimEnd(env.FRONTEND_HOST, '/')}/checkout-session/{CHECKOUT_SESSION_ID}`,
+      return_url: `${helper.trimEnd(env.FRONTEND_HOST, '/')}/checkout-session/{CHECKOUT_SESSION_ID}?authenticated=${authenticated}`,
       customer: customer.id,
       locale: helper.getStripeLocale(locale),
       payment_intent_data: {
@@ -98,7 +99,7 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
 export const checkCheckoutSession = async (req: Request, res: Response) => {
   try {
     const stripeAPI = (await import('../payment/stripe.js')).default
-    const { sessionId } = req.params
+    const { sessionId } = req.params;
 
     //
     // 1. Retrieve Checkout Sesssion and Booking
@@ -121,8 +122,8 @@ export const checkCheckoutSession = async (req: Request, res: Response) => {
     if (!booking) {
       const msg = `Booking with sessionId ${sessionId} not found`
       logger.info(`[stripe.checkCheckoutSession] ${msg}`)
-      res.status(204).send(msg)
-      return
+      res.status(204).send(msg);
+      return;
     }
 
     //
@@ -130,13 +131,14 @@ export const checkCheckoutSession = async (req: Request, res: Response) => {
     // (Set BookingStatus to Paid and remove expireAt TTL index)
     //
     if (session.payment_status === 'paid') {
-      booking.expireAt = undefined
-      booking.status = movininTypes.BookingStatus.Paid
-      await booking.save()
+      booking.expireAt = undefined;
+      booking.status = movininTypes.BookingStatus.Paid;
+
+      await booking.save();
 
       const property = await Property.findById(booking.property)
       if (!property) {
-        throw new Error(`Property ${booking.property} not found`)
+        throw new Error(`Property ${booking.property} not found`);
       }
 
       const agency = await User.findById(booking.agency)
@@ -150,13 +152,40 @@ export const checkCheckoutSession = async (req: Request, res: Response) => {
         throw new Error(`Driver ${booking.renter} not found`)
       }
 
-      user.expireAt = undefined
-      await user.save()
+      user.expireAt = undefined;
+      await user.save();
+
+      const dateFormat = (date: Date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      // property.bookingRoomId
+      const startDate = dateFormat(booking.from);
+      const endDate   = dateFormat(booking.to);
+
+      
+      // TODO: ..store booking dates in the booking server..
+      try {
+        await fetch(`${env.BOOKING_API_BACKEND}/api/bookings`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            roomId: property.bookingRoomId,
+            startDate,
+            endDate,
+            customerName: user.fullName,
+            customerEmail: user.email,
+            notes: ""
+          })
+        });
+      } catch(ex) {
+        console.log("CRITICAL ERROR: Coulnd't save booking in the booking server: ", ex);
+      }
+      
 
       // Notify renter
       if (!(await bookingController.confirm(user, booking, false))) {
-        res.sendStatus(400)
-        return
+        res.sendStatus(400);
+        return;
       }
 
       // Notify agency
@@ -172,8 +201,8 @@ export const checkCheckoutSession = async (req: Request, res: Response) => {
         await bookingController.notify(user, booking.id, admin, message)
       }
 
-      res.sendStatus(200)
-      return
+      res.sendStatus(200);
+      return;
     }
 
     //

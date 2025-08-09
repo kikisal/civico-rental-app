@@ -307,6 +307,7 @@ export interface Property {
   _id: string
   name: string
   type: PropertyType
+  bookingRoomId: string
   agency: User
   description: string
   available: boolean
@@ -449,6 +450,7 @@ export interface CreatePaymentPayload {
   customerName: string
   name: string
   description?: string
+  authenticated?: boolean
 }
 
 export interface CreatePayPalOrderPayload {

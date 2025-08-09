@@ -82,6 +82,7 @@ const env = {
 
   APP_TYPE: movininTypes.AppType.Frontend,
   API_HOST: String(import.meta.env.VITE_MI_API_HOST),
+  BOOKING_API_ENDPOINT: import.meta.env.VITE_BOOKING_API_ENDPOINT,
   LANGUAGES: LANGUAGES.map((l) => l.code),
   _LANGUAGES: LANGUAGES,
   DEFAULT_LANGUAGE: String(import.meta.env.VITE_MI_DEFAULT_LANGUAGE || 'en'),
@@ -133,7 +134,8 @@ const env = {
   MAP_LONGITUDE: Number(String(import.meta.env.VITE_MI_MAP_LONGITUDE || '-95.844032')),
   MAP_ZOOM: Number(String(import.meta.env.VITE_MI_MAP_ZOOM || '5')),
   EXTRA_BEDS: 3,
-  PRICE_PER_EXTRABED: 15
+  PRICE_PER_EXTRABED: 15,
+
 }
 
 export default env

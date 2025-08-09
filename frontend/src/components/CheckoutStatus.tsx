@@ -20,6 +20,7 @@ interface CheckoutStatusProps {
   language: string,
   status: 'success' | 'error'
   className?: string
+  wasAuthenticated?: boolean
 }
 
 const CheckoutStatus = (
@@ -29,6 +30,7 @@ const CheckoutStatus = (
     language,
     status,
     className,
+    wasAuthenticated
   }: CheckoutStatusProps
 ) => {
   const [booking, setBooking] = useState<movininTypes.Booking>()
@@ -37,7 +39,7 @@ const CheckoutStatus = (
 
   useEffect(() => {
     const init = async () => {
-      const _booking = await BookingService.getBooking(bookingId)
+      const _booking = await BookingService.getBooking(bookingId, wasAuthenticated)
       setBooking(_booking)
       setPrice(await PaymentService.convertPrice(_booking.price!))
       setLoading(false)

@@ -140,6 +140,13 @@ export const DB_DEBUG = helper.StringToBoolean(__env__('MI_DB_DEBUG', false, 'fa
 export const DB_SERVER_SIDE_JAVASCRIPT = helper.StringToBoolean(__env__('MI_DB_SERVER_SIDE_JAVASCRIPT', false, 'false'))
 
 /**
+ * Booking server API backend.
+ * 
+ * @type {string}
+ */
+export const BOOKING_API_BACKEND = __env__('BOOKING_API_BACKEND', true, 'http://localhost:3000');
+
+/**
  * Cookie secret. It should at least be 32 characters long, but the longer the better.
  *
  * @type {string}
@@ -669,6 +676,7 @@ export interface NotificationCounter extends Document {
 export interface Property extends Document {
   name: string
   type: movininTypes.PropertyType
+  bookingRoomId: string
   agency: Types.ObjectId
   description: string
   image: string

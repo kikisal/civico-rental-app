@@ -766,7 +766,7 @@ export const validateEmail = async (req: Request, res: Response) => {
       throw new Error('body.email is not valid')
     }
 
-    const exists = await User.exists({ email })
+    const exists = await User.exists({ email, verified: true });
 
     if (exists) {
       res.sendStatus(204)

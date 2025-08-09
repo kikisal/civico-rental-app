@@ -20,10 +20,8 @@ const userSchema = new Schema<env.User>(
     email: {
       type: String,
       lowercase: true,
-      unique: true,
       required: [true, "can't be blank"],
       validate: [validator.isEmail, 'is not valid'],
-      index: true,
       trim: true,
     },
     phone: {

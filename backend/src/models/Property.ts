@@ -21,6 +21,9 @@ const propertySchema = new Schema<env.Property>(
       ],
       required: [true, "can't be blank"],
     },
+    bookingRoomId: {
+      type: String,
+    },
     agency: {
       type: Schema.Types.ObjectId,
       required: [true, "can't be blank"],

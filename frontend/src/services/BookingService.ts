@@ -38,14 +38,19 @@ export const getBookings = (payload: movininTypes.GetBookingsPayload, page: numb
  * @param {string} id
  * @returns {Promise<movininTypes.Booking>}
  */
-export const getBooking = (id: string): Promise<movininTypes.Booking> =>
-  axiosInstance
-    .get(
-      `/api/booking/${encodeURIComponent(id)}/${UserService.getLanguage()}`,
-      { withCredentials: true }
-    )
-    .then((res) => res.data)
+export const getBooking = (id: string, wasAuthenticated?: boolean): Promise<movininTypes.Booking> => {
+  return wasAuthenticated ? axiosInstance.get(
+        `/api/booking/${encodeURIComponent(id)}/${UserService.getLanguage()}`,
+        { withCredentials: true }
+      ).then((res) => res.data) : (axiosInstance.get(
+        `/api/guest-booking/${encodeURIComponent(id)}/${UserService.getLanguage()}`,
+        { withCredentials: true }
+      )
+      .then((res) => res.data) 
+      )
 
+}
+  
 /**
  * Cancel a Booking.
  *

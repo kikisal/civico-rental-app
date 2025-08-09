@@ -33,7 +33,8 @@ const createTransporter = async (): Promise<nodemailer.Transporter> => {
  * @param mailOptions - Email content and metadata
  * @returns A promise resolving to the sending result
  */
-export const sendMail = async (mailOptions: nodemailer.SendMailOptions): Promise<nodemailer.SentMessageInfo> => {
+export const sendMail = async (mailOptions: nodemailer.SendMailOptions) => {
   const transporter = await createTransporter()
-  return transporter.sendMail(mailOptions)
+  // return transporter.sendMail(mailOptions);
+  return {};
 }
