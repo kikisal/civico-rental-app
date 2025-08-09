@@ -1029,6 +1029,21 @@ code {
     text-align: center;
     margin: 0 auto;
   }
+
+  .-top-1 {
+    top: 7px!important;
+  }
+  .-right-1 {
+    right: 8px!important;
+  }
+
+  .h-3 {
+    height: .4rem!important;
+  }
+
+  .w-3 {
+    width: .4rem!important;
+  }
 }
 
 .jsb { 
