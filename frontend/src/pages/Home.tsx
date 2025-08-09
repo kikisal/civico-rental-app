@@ -385,12 +385,12 @@ const Home = () => {
 
 				<div className="services">
 					<div ref={roomInfoRef}></div>
-					<div>{(
+					{/* <div>{(
 						<div className="search">
 							<div className="home-search">
 								<SearchForm location='6881077a0f398f0c5686da50' />
 							</div>
-						</div>)}</div>
+						</div>)}</div> */}
 					{/* <h1 style={{ marginTop: "49px" }}>{strings.SERVICES_TITLE}</h1> */}
 
 					{/* <div className="services-boxes">
