@@ -18,6 +18,32 @@ const strings = new LocalizedStrings({
     COUNTRY: 'country',
     COUNTRIES: 'countries',
   },
+  it: {
+    NEW_COUNTRY: 'Nuovo paese',
+    DELETE_COUNTRY: 'Sei sicuro di voler eliminare questo paese?',
+    CANNOT_DELETE_COUNTRY: 'Questo paese non può essere eliminato perché è collegato a delle località.',
+    EMPTY_LIST: 'Nessun paese.',
+    COUNTRY: 'paese',
+    COUNTRIES: 'paesi',
+  },
+
+  es: {
+    NEW_COUNTRY: 'Nuevo país',
+    DELETE_COUNTRY: '¿Estás seguro de que quieres eliminar este país?',
+    CANNOT_DELETE_COUNTRY: 'Este país no se puede eliminar porque está relacionado con ubicaciones.',
+    EMPTY_LIST: 'No hay países.',
+    COUNTRY: 'país',
+    COUNTRIES: 'países',
+  },
+
+  de: {
+    NEW_COUNTRY: 'Neues Land',
+    DELETE_COUNTRY: 'Sind Sie sicher, dass Sie dieses Land löschen möchten?',
+    CANNOT_DELETE_COUNTRY: 'Dieses Land kann nicht gelöscht werden, da es mit Standorten verknüpft ist.',
+    EMPTY_LIST: 'Keine Länder.',
+    COUNTRY: 'Land',
+    COUNTRIES: 'Länder',
+  },
 })
 
 langHelper.setLanguage(strings)

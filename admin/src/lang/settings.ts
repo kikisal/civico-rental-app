@@ -12,6 +12,21 @@ const strings = new LocalizedStrings({
     NETWORK_SETTINGS: 'Network settings',
     SETTINGS_EMAIL_NOTIFICATIONS: 'Enable email notifications',
   },
+  it: {
+    SETTINGS_UPDATED: 'Impostazioni aggiornate con successo.',
+    NETWORK_SETTINGS: 'Impostazioni di rete',
+    SETTINGS_EMAIL_NOTIFICATIONS: 'Abilita notifiche via email',
+  },
+  es: {
+    SETTINGS_UPDATED: 'Configuración actualizada con éxito.',
+    NETWORK_SETTINGS: 'Configuración de red',
+    SETTINGS_EMAIL_NOTIFICATIONS: 'Activar notificaciones por correo electrónico',
+  },
+  de: {
+    SETTINGS_UPDATED: 'Einstellungen erfolgreich aktualisiert.',
+    NETWORK_SETTINGS: 'Netzwerkeinstellungen',
+    SETTINGS_EMAIL_NOTIFICATIONS: 'E-Mail-Benachrichtigungen aktivieren',
+  },
 })
 
 langHelper.setLanguage(strings)

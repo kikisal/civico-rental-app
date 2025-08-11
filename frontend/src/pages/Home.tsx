@@ -231,6 +231,8 @@ const Home = () => {
 					return;
 				}
 			}, 500);
+		} else {
+			onRoomInfoMounted();
 		}
 
 		return () => {

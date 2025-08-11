@@ -18,6 +18,32 @@ const strings = new LocalizedStrings({
     LOCATION: 'location',
     LOCATIONS: 'locations',
   },
+  it: {
+    NEW_LOCATION: 'Nuova località',
+    DELETE_LOCATION: 'Sei sicuro di voler eliminare questa località?',
+    CANNOT_DELETE_LOCATION: 'Questa località non può essere eliminata perché è collegata ad altre località o proprietà.',
+    EMPTY_LIST: 'Nessuna località.',
+    LOCATION: 'località',
+    LOCATIONS: 'località',
+  },
+
+  es: {
+    NEW_LOCATION: 'Nueva ubicación',
+    DELETE_LOCATION: '¿Estás seguro de que deseas eliminar esta ubicación?',
+    CANNOT_DELETE_LOCATION: 'Esta ubicación no se puede eliminar porque está relacionada con otras ubicaciones o propiedades.',
+    EMPTY_LIST: 'No hay ubicaciones.',
+    LOCATION: 'ubicación',
+    LOCATIONS: 'ubicaciones',
+  },
+
+  de: {
+    NEW_LOCATION: 'Neuer Ort',
+    DELETE_LOCATION: 'Möchten Sie diesen Ort wirklich löschen?',
+    CANNOT_DELETE_LOCATION: 'Dieser Ort kann nicht gelöscht werden, da er mit anderen Orten oder Immobilien verknüpft ist.',
+    EMPTY_LIST: 'Keine Orte.',
+    LOCATION: 'Ort',
+    LOCATIONS: 'Orte',
+  },
 })
 
 langHelper.setLanguage(strings)

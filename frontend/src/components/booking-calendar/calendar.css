@@ -1037,11 +1037,11 @@ code {
     right: 8px!important;
   }
 
-  .h-3 {
+  .aspect-square .h-3 {
     height: .4rem!important;
   }
 
-  .w-3 {
+  .aspect-square .w-3 {
     width: .4rem!important;
   }
 }

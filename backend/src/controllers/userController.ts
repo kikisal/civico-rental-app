@@ -446,7 +446,7 @@ export const signin = async (req: Request, res: Response) => {
       || !user.password
       || ![movininTypes.AppType.Frontend, movininTypes.AppType.Admin].includes(type)
       || (type === movininTypes.AppType.Admin && user.type === movininTypes.UserType.User)
-      || (type === movininTypes.AppType.Frontend && user.type !== movininTypes.UserType.User)
+      // || (type === movininTypes.AppType.Frontend && user.type !== movininTypes.UserType.User)
     ) {
       res.sendStatus(204)
       return
@@ -488,7 +488,8 @@ export const signin = async (req: Request, res: Response) => {
         enableEmailNotifications: user.enableEmailNotifications,
         blacklisted: user.blacklisted,
         avatar: user.avatar,
-      }
+        type: user.type
+      };
 
       //
       // On mobile, we return the token in the response body.

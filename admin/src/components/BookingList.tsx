@@ -272,16 +272,17 @@ const BookingList = ({
 
           return (
             <div>
-              <Tooltip title={commonStrings.UPDATE}>
+              {/* <Tooltip title={commonStrings.UPDATE}>
                 <IconButton onClick={() => navigate(`/update-booking?b=${row._id}`)}>
                   <EditIcon />
                 </IconButton>
               </Tooltip>
+
               <Tooltip title={commonStrings.DELETE}>
                 <IconButton onClick={handleDelete}>
                   <DeleteIcon />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </div>
           )
         },

@@ -73,9 +73,9 @@ const Bookings = () => {
           <div className="col-1">
             {leftPanel && (
               <>
-                <Button variant="contained" className="btn-primary cl-new-booking" size="small" onClick={() => navigate('/create-booking')}>
+                {/* <Button variant="contained" className="btn-primary cl-new-booking" size="small" onClick={() => navigate('/create-booking')}>
                   {strings.NEW_BOOKING}
-                </Button>
+                </Button> */}
                 {
                   admin
                   && (

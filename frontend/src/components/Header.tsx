@@ -84,6 +84,8 @@ const Header = ({
   const isCurrencyMenuOpen = Boolean(currencyAnchorEl)
   const isSideMenuOpen = Boolean(sideAnchorEl)
 
+  const isAdmin = UserService.getCurrentUser()?.type == "ADMIN";
+
   const classes = {
     list: {
       width: 250,
@@ -343,6 +345,8 @@ const Header = ({
                 </IconButton>
 
                 <Button onClick={() => navigate('/')} className="logo">{env.WEBSITE_NAME}</Button>
+                
+                {isAdmin && (<Button className="hide-on-mobile" onClick={() => {const a = document.createElement('a'); a.href="https://admin-bookings.civico46rooms.it"; a.target="_blank"; a.click();}}>PRENOTAZIONI</Button>)}
               </>
             )}
             <>
@@ -357,7 +361,20 @@ const Header = ({
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary={strings.HOME} />
                   </ListItem>
-                  {isSignedIn && (
+                  
+                  {isAdmin && (<ListItem
+                    onClick={() => {
+                      // navigate('/')
+                      const a = document.createElement('a'); a.href="https://admin-bookings.civico46rooms.it"; a.target="_blank"; a.click();
+                        
+                      handleSideMenuClose()
+                    }}
+                  >
+                    <ListItemIcon><BookingsIcon /></ListItemIcon>
+                    <ListItemText primary={"PRENOTAZIONI"} />
+                  </ListItem>)}
+                  
+                  {/* {isSignedIn && (
                     <ListItem
                       onClick={() => {
                         navigate('/bookings')
@@ -367,8 +384,8 @@ const Header = ({
                       <ListItemIcon><BookingsIcon /></ListItemIcon>
                       <ListItemText primary={strings.BOOKINGS} />
                     </ListItem>
-                  )}
-                  <ListItem
+                  )} */}
+                  {/* <ListItem
                     onClick={() => {
                       navigate('/agencies')
                       handleSideMenuClose()
@@ -376,8 +393,8 @@ const Header = ({
                   >
                     <ListItemIcon><AgencyIcon /></ListItemIcon>
                     <ListItemText primary={strings.AGENCIES} />
-                  </ListItem>
-                  <ListItem
+                  </ListItem> */}
+                  {/* <ListItem
                     onClick={() => {
                       navigate('/destinations')
                       handleSideMenuClose()
@@ -385,6 +402,15 @@ const Header = ({
                   >
                     <ListItemIcon><LocationIcon /></ListItemIcon>
                     <ListItemText primary={strings.LOCATIONS} />
+                  </ListItem> */}
+                  <ListItem
+                    onClick={() => {
+                      navigate('/contact')
+                      handleSideMenuClose()
+                    }}
+                  >
+                    <ListItemIcon><MailIcon /></ListItemIcon>
+                    <ListItemText primary={strings.CONTACT} />
                   </ListItem>
                   <ListItem
                     onClick={() => {
@@ -421,15 +447,6 @@ const Header = ({
                   >
                     <ListItemIcon><TosIcon /></ListItemIcon>
                     <ListItemText primary={strings.TOS} />
-                  </ListItem>
-                  <ListItem
-                    onClick={() => {
-                      navigate('/contact')
-                      handleSideMenuClose()
-                    }}
-                  >
-                    <ListItemIcon><MailIcon /></ListItemIcon>
-                    <ListItemText primary={strings.CONTACT} />
                   </ListItem>
                   {env.isMobile && !hideSignin && !isSignedIn && isLoaded && (
                     <>

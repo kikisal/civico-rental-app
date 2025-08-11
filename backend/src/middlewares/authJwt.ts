@@ -19,8 +19,11 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   const isAdmin = authHelper.isAdmin(req)
   const isFrontend = authHelper.isFrontend(req)
 
+  
+  const adminCookieName = env.FRONTEND_AUTH_COOKIE_NAME; // env.ADMIN_AUTH_COOKIE_NAME
+
   if (isAdmin) {
-    token = req.signedCookies[env.ADMIN_AUTH_COOKIE_NAME] as string // admin
+    token = req.signedCookies[adminCookieName] as string // admin
   } else if (isFrontend) {
     token = req.signedCookies[env.FRONTEND_AUTH_COOKIE_NAME] as string // frontend
   } else {
@@ -39,9 +42,9 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
       }
 
       if (isAdmin) {
-        $match.$and?.push({ type: { $in: [movininTypes.UserType.Admin, movininTypes.UserType.Agency] } })
+        // $match.$and?.push({ type: { $in: [movininTypes.UserType.Admin, movininTypes.UserType.Agency] } })
       } else if (isFrontend) {
-        $match.$and?.push({ type: movininTypes.UserType.User })
+        // $match.$and?.push({ type: movininTypes.UserType.User })
       }
 
       if (

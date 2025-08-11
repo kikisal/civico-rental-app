@@ -96,3 +96,13 @@
     min-height: 56px !important;
   }
 }
+
+.hide-on-mobile {
+    display: block;
+}
+
+@media screen and (max-width: 500px) {
+    .hide-on-mobile {
+        display: none!important;
+    }
+}

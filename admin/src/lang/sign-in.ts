@@ -18,6 +18,32 @@ const strings = new LocalizedStrings({
     RESET_PASSWORD: 'Forgot password?',
     STAY_CONNECTED: 'Stay connected',
   },
+  it: {
+    SIGN_IN_HEADING: 'Accedi',
+    SIGN_IN: 'Accedi',
+    ERROR_IN_SIGN_IN: 'Email o password errati.',
+    IS_BLACKLISTED: 'Il tuo account è sospeso.',
+    RESET_PASSWORD: 'Hai dimenticato la password?',
+    STAY_CONNECTED: 'Rimani connesso',
+  },
+
+  es: {
+    SIGN_IN_HEADING: 'Iniciar sesión',
+    SIGN_IN: 'Iniciar sesión',
+    ERROR_IN_SIGN_IN: 'Correo electrónico o contraseña incorrectos.',
+    IS_BLACKLISTED: 'Tu cuenta está suspendida.',
+    RESET_PASSWORD: '¿Olvidaste tu contraseña?',
+    STAY_CONNECTED: 'Mantener sesión iniciada',
+  },
+
+  de: {
+    SIGN_IN_HEADING: 'Anmelden',
+    SIGN_IN: 'Anmelden',
+    ERROR_IN_SIGN_IN: 'Falsche E-Mail oder Passwort.',
+    IS_BLACKLISTED: 'Ihr Konto ist gesperrt.',
+    RESET_PASSWORD: 'Passwort vergessen?',
+    STAY_CONNECTED: 'Eingeloggt bleiben',
+  },
 })
 
 langHelper.setLanguage(strings)

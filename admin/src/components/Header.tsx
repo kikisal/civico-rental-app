@@ -289,7 +289,7 @@ const Header = ({
                   <ListItemIcon><DashboardIcon /></ListItemIcon>
                   <ListItemText primary={strings.DASHBOARD} />
                 </ListItem>
-                <ListItem
+                {/* <ListItem
                   onClick={() => {
                     navigate('/scheduler')
                     handleSideMenuClose()
@@ -333,7 +333,7 @@ const Header = ({
                 >
                   <ListItemIcon><PropertiesIcon /></ListItemIcon>
                   <ListItemText primary={strings.PROPERTIES} />
-                </ListItem>
+                </ListItem> */}
                 <ListItem
                   onClick={() => {
                     navigate('/users')
