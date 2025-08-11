@@ -10,3 +10,118 @@ div.contact {
 div.contact .form {
   margin: 100px 0;
 }
+
+
+.flex-info-container {
+	line-height: 1.6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 20px;
+}
+
+.flex-info-container .container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Headings */
+.flex-info-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Contact Info */
+.flex-info-container p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.flex-info-container a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.flex-info-container a:hover {
+    color: #1d6fa5;
+}
+
+.flex-info-container .email i,
+.flex-info-container .phones i,
+.flex-info-container .address i {
+    margin-right: 8px;
+    color: #2c3e50;
+}
+
+/* Phones container */
+.flex-info-container .phones p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Address */
+.flex-info-container .address {
+    font-style: italic;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* Social icons */
+.flex-info-container .socials {
+    margin: 20px 0;
+}
+
+.flex-info-container .socials a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: #555;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.flex-info-container .socials a:hover {
+    color: #3498db;
+    transform: scale(1.2);
+}
+
+/* Website link */
+.flex-info-container .website a {
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .flex-info-container .container {
+        padding: 25px;
+    }
+
+    .flex-info-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .flex-info-container .socials a {
+        font-size: 1.3rem;
+    }
+
+    .flex-info-container {
+        align-items: unset;
+        width: 100%;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .flex-info-container .container {
+        border-radius: 0;
+    }
+}
