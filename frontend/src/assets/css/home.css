@@ -463,7 +463,6 @@ div.home div.customer-care div.customer-care-img img {
 	left: 0;
 }
 
-
 .rooms-ref {
 	width: 60%;
 }
@@ -482,4 +481,20 @@ div.home div.customer-care div.customer-care-img img {
 
 .room-card {
 	width: 100%!important;
+}
+
+@media screen and (max-width: 1244px) {
+	div.home div.services {
+		width: 960px;
+		flex-direction: column;
+	}
+
+	.rooms-ref {
+		width: 100%;
+	}
+
+	.about-us-component {
+		width: 100%;
+	}
+
 }

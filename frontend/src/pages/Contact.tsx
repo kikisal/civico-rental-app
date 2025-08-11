@@ -25,10 +25,12 @@ const Contact = () => {
 
         <p class="address"><i class="fa-solid fa-location-dot"></i> Santa Maria di Licodia, Via Regina Margherita 46, 95038, Sicilia, Italia</p>
         
+        <!--
         <div class="socials">
             <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
+        -->
 
         <p class="website"><a href="https://civico46rooms.it" target="_blank">civico46rooms.it</a></p>
     </div>
