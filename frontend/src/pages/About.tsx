@@ -1,38 +1,18 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Button } from '@mui/material'
-import { strings } from '@/lang/about'
 import Layout from '@/components/Layout'
 import Footer from '@/components/Footer'
-
 import '@/assets/css/about.css'
+import AboutUsComponent from '@/components/AboutUsComponent'
+
 
 const About = () => {
-  const navigate = useNavigate()
+  const onLoad = () => { };
 
-  const onLoad = () => { }
 
   return (
     <Layout onLoad={onLoad} strict={false}>
-      <div className="about">
-        <h1>{strings.TITLE1}</h1>
-        <h2>{strings.SUBTITLE1}</h2>
-        <p>{strings.CONTENT1}</p>
-
-        <h1>{strings.TITLE2}</h1>
-        <h2>{strings.SUBTITLE2}</h2>
-        <p>{strings.CONTENT2}</p>
-
-        <Button
-          variant="contained"
-          className="btn-primary"
-          aria-label="Find deal"
-          onClick={() => navigate('/')}
-        >
-          {strings.FIND_DEAL}
-        </Button>
+      <div style={{marginTop: "32px"}}>
+        <AboutUsComponent drawTitle={true}></AboutUsComponent>
       </div>
-
       <Footer />
     </Layout>
   )

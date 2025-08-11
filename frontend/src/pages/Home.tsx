@@ -32,6 +32,7 @@ import ChevronLeftIcon from  "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import axiosInstance from '@/services/axiosInstance'
 import * as UserService from '@/services/UserService'
+import AboutUsComponent from '@/components/AboutUsComponent'
 
 type AssetImage = {
 	url: 		string,
@@ -386,7 +387,8 @@ const Home = () => {
 				</div>
 
 				<div className="services">
-					<div ref={roomInfoRef}></div>
+					<div ref={roomInfoRef} className='rooms-ref'></div>
+					<div className='about-us-component'><AboutUsComponent></AboutUsComponent></div>
 					{/* <div>{(
 						<div className="search">
 							<div className="home-search">

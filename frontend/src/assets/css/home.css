@@ -128,12 +128,13 @@ div.home div.search div.home-search {
 }
 
 div.home div.services {
-	background-color: #fff;
-	width: 100%;
 	padding: 40px 0 100px 0;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction: row;
+	align-items: start;
+	width: 1240px;
+	margin: 0 auto;
+	gap: 24px;
 }
 
 div.home div.services h1 {
@@ -460,4 +461,25 @@ div.home div.customer-care div.customer-care-img img {
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#FFFFFF", GradientType=1);	
 	left: 0;
+}
+
+
+.rooms-ref {
+	width: 60%;
+}
+
+.about-us-component {
+	width: 40%;
+}
+
+.slider-container {
+	height: 100%;
+}
+
+.slider-container img {
+	object-fit: cover!important;
+}
+
+.room-card {
+	width: 100%!important;
 }
