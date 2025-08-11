@@ -483,18 +483,46 @@ div.home div.customer-care div.customer-care-img img {
 	width: 100%!important;
 }
 
-@media screen and (max-width: 1244px) {
+@media screen and (max-width: 1366px) {
 	div.home div.services {
+		/* width: ; */
 		width: 960px;
-		flex-direction: column;
 	}
 
 	.rooms-ref {
-		width: 100%;
+		/* width: 100%; */
 	}
 
 	.about-us-component {
-		width: 100%;
+		/* width: 100%; */
 	}
+
+}
+
+
+@media screen and (max-width: 400px) {
+	div.home div.services {
+		/* width: ; */
+		width: 100%;
+		flex-direction: column;
+		/* padding-left: 8px;
+		padding-right: 8px;
+		 */
+	}
+
+	.rooms-ref {
+		width: 100%!important;
+		padding: 8px;
+	}
+
+	.about-us-component {
+		width: 100%!important;
+	}
+
+	.room-card {
+		border-radius: 0;
+		margin: 20px auto;
+	}
+
 
 }
