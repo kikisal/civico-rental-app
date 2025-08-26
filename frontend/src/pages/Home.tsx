@@ -40,7 +40,9 @@ type AssetImage = {
 	backdrop: 	string | null,
 	image: 		HTMLImageElement | null,
 	radius?: 	string | null,
-	margin?:	number
+	margin?:	number,
+	textAlign?: "center" | "flex-start" | "flex-end",
+	textPadding?: string,
 };
 
 type EventFunctionSign = () => void;
@@ -357,7 +359,7 @@ const Home = () => {
 								_bannerImages.map(
 									(img, indx) => 
 									<div className="slider-image" style={{left: `${indx * 100}%`, background: img.backdrop ? img.backdrop : "none"}}>
-										{img.text && (<div className="image-text"><span>{img.text}</span></div>)}
+										{img.text && (<div className="image-text" style={{alignItems: img.textAlign ?? "center", padding: img.textPadding ?? "0"}}><span>{img.text}</span></div>)}
 										<div className="image-content"><img alt="Image" src={img.image!.src} style={{
 											backgroundColor: img.backdrop == null ? "#ccc" : img.backdrop,
 											borderRadius: img.radius ? img.radius : "0",

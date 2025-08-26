@@ -430,8 +430,8 @@ div.home div.customer-care div.customer-care-img img {
 	align-items: center;
 	justify-content: center;
 	letter-spacing: 8px;
-    text-shadow: 0 0 19px black;
-    font-weight: bold;
+	text-shadow: 0 0 27px black;
+	font-weight: bold;
 	font-size: 4rem;
 	color:#fff;
 }
@@ -524,5 +524,10 @@ div.home div.customer-care div.customer-care-img img {
 		margin: 20px auto;
 	}
 
-
+	.image-text {
+		line-height: 40px;
+		text-align: center;
+		letter-spacing: 3px;
+		font-size: 2rem;
+	}
 }

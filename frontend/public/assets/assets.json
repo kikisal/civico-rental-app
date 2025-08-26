@@ -2,12 +2,14 @@
     "images": [
         {
             "url": "6882286314a2b6d1703c5bcf_j-F637npNE2Ob73MLpCo0_1753360483285_27.jpg",
-            "text": null,
+            "text": "Fra etna e il mare",
             "backdrop": "#828979",
             "radius": "0",
-            "margin": 0
+            "margin": 0,
+            "textAlign": "flex-end",
+            "textPadding": "58px 0"
         },
-	{
+	    {
             "url": "6882286314a2b6d1703c5bcf_Ltg-8hnDFcivqBGiLP6XL_1753360483271_19.jpg",
             "text": null,
             "backdrop": "#726a63",
