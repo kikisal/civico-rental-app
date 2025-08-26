@@ -24,8 +24,8 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <div className="header">{env.WEBSITE_NAME}</div>
-      <section className="main">
+      <div className="header" style={{width: "100%"}}>{env.WEBSITE_NAME}</div>
+      <section className="main" style={{display: "flex", justifyContent: "space-between", width: "100%"}}>
         <div className="main-section">
           <div className="title">{strings.CORPORATE}</div>
           <ul className="links">
@@ -35,13 +35,12 @@ const Footer = () => {
             <li onClick={() => navigate('/tos')}>{strings.TOS}</li>
           </ul>
         </div>
-        <div className="main-section">
+        {/* <div className="main-section">
           <div className="title">{strings.RENT}</div>
           <ul className="links">
             <li onClick={() => navigate('/agencies')}>{strings.AGENCIES}</li>
-            <li onClick={() => navigate('/destinations')}>{strings.LOCATIONS}</li>
           </ul>
-        </div>
+        </div> */}
         <div className="main-section">
           <div className="title">{strings.SUPPORT}</div>
           <ul className="links">

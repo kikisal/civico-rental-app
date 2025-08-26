@@ -11,7 +11,7 @@ const About = () => {
   return (
     <Layout onLoad={onLoad} strict={false}>
       <div style={{marginTop: "32px"}}>
-        <AboutUsComponent drawTitle={true}></AboutUsComponent>
+        <AboutUsComponent drawMap={true} drawTitle={true}></AboutUsComponent>
       </div>
       <Footer />
     </Layout>

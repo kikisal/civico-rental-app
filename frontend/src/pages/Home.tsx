@@ -392,7 +392,7 @@ const Home = () => {
 
 				<div className="services">
 					<div ref={roomInfoRef} className='rooms-ref'></div>
-					<div className='about-us-component'><AboutUsComponent></AboutUsComponent></div>
+					<div className='about-us-component'><AboutUsComponent drawMap={window.innerWidth / window.innerHeight < 1}></AboutUsComponent></div>
 					{/* <div>{(
 						<div className="search">
 							<div className="home-search">

@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import * as UserService from "@/services/UserService";
 
 import '@/assets/css/about.css'
+import Map from './Map'
 
 const __strings = {
   it: {
@@ -56,7 +57,7 @@ Easily accessible from the highway network and well connected by public transpor
     TEXT_2: `Housed in a historic 19th-century building, Civico 46 comes from a recent renovation that combines period charm with modern and functional touches. A welcoming, intimate place full of character.`,
     ROOMS: "The Rooms",
     ROOMS_SUBTITLE: "We have three independent rooms of about 40 m², all equipped with",
-      
+
     COFFE_MACHINE: "Coffee machine",
     BAR_FRIDGE: "Mini bar fridge",
     SMOKE_NOT_ALLOWED: "Non-smoking rooms (except in the courtyard)",
@@ -91,13 +92,13 @@ Leichter Zugang zum Autobahnnetz und gut mit öffentlichen Verkehrsmitteln verbu
     TEXT_2: `Untergebracht in einem historischen Gebäude aus dem 19. Jahrhundert, entstand Civico 46 durch eine kürzliche Renovierung, die historischen Charme mit modernen und funktionalen Elementen vereint. Ein gemütlicher, intimer Ort voller Charakter.`,
     ROOMS: "Die Zimmer",
     ROOMS_SUBTITLE: "Wir verfügen über drei unabhängige Zimmer von etwa 40 m², alle ausgestattet mit",
-    
+
     COFFE_MACHINE: "Kaffeemaschine",
     BAR_FRIDGE: "Minibar-Kühlschrank",
     SMOKE_NOT_ALLOWED: "Nichtraucherzimmer (außer im Innenhof)",
     BIKE_RENTING: "Möglichkeit, Fahrräder zu mieten",
     MOTORBIKE_TOUR_SERVICE: "Organisation von Offroad-Motorradtouren im Nebrodi-Park",
-    
+
     PRIVATE_BATHROOM: "Privatem Bad",
     FREE_WIFI: "Kostenlosem WLAN",
     AIR_CONDITIONING: "Klimaanlage",
@@ -161,13 +162,13 @@ Accès facile au réseau autoroutier et bien desservi par les transports en comm
     TEXT_2: `Installé dans un bâtiment historique du XIXe siècle, Civico 46 est le fruit d'une rénovation récente qui a su allier le charme d'époque à des touches modernes et fonctionnelles. Un lieu accueillant, intime et plein de caractère.`,
     ROOMS: "Les Chambres",
     ROOMS_SUBTITLE: "Nous disposons de trois chambres indépendantes d’environ 40 m², toutes équipées de",
-    
+
     COFFE_MACHINE: "Machine à café",
     BAR_FRIDGE: "Réfrigérateur de bar",
     SMOKE_NOT_ALLOWED: "Chambres non-fumeurs (sauf dans la cour)",
     BIKE_RENTING: "Possibilité de location de vélos",
     MOTORBIKE_TOUR_SERVICE: "Organisation d’excursions à moto tout-terrain dans le Parc des Nébrodes",
-    
+
     PRIVATE_BATHROOM: "Salle de bain privée",
     FREE_WIFI: "Wi-Fi gratuit",
     AIR_CONDITIONING: "Climatisation",
@@ -188,74 +189,86 @@ Accès facile au réseau autoroutier et bien desservi par les transports en comm
   }
 };
 
-
 const AboutUsComponent = (props: any) => {
   const strings = (__strings as any)[UserService.getLanguage()] || __strings.en;
   const drawTitle = !!props.drawTitle;
+  const drawMap = !!props.drawMap;
 
-  const pageContent = `  <div class="about-us-container">
-    <div class="container">
-      <h1 class="${!drawTitle ? 'hide-it' : ''}">${strings.WHO_ARE_WE}</h1>
-
-      <section>
-        <h2>${strings.WHEARE_ARE_wE}</h2>
-        <p>${strings.TEXT_1}</p>
-      </section>
-
-      <section>
-        <h2>${strings.THE_BUILDING}</h2>
-        <p>${strings.TEXT_2}</p>
-      </section>
-
-      <section>
-        <h2>${strings.ROOMS}</h2>
-        <div class="card">
-          <p>${strings.ROOMS_SUBTITLE}:</p>
-          <ul>
-            <li>${strings.COFFE_MACHINE}</li>
-            <li>${strings.BAR_FRIDGE}</li>
-            <li>${strings.SMOKE_NOT_ALLOWED}</li>
-            <li>${strings.BIKE_RENTING}</li>
-            <li>${strings.MOTORBIKE_TOUR_SERVICE}</li>
-            <li>${strings.PRIVATE_BATHROOM}</li>
-            <li>${strings.FREE_WIFI}</li>
-            <li>${strings.AIR_CONDITIONING}</li>
-            <li>${strings.SMART_TV}</li>
-          </ul>
-          <p>${strings.TEXT_3}</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>${strings.EXTRA_SERVICES}</h2>
-        <ul>
-          <li>${strings.ANIMALS_ALLOWED}</li>
-          <li>${strings.TRANSPORTATION_AVAILABILITY}</li>
-          <li>${strings.EXTRA_BEDS}</li>
-          <li>${strings.SELF_CHECKIN}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>${strings.WHY_US}</h2>
-        <ul>
-          <li>${strings.STRATEGIC_LOCATION}</li>
-          <li>${strings.UNIQUE_VIBE}</li>
-          <li>${strings.COMFY_ENV}</li>
-          <li>${strings.FLEXIBLE_CUSTOMERAWARE_HOUSING}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>${strings.IDEAL_FOR}</h2>
-        <p>${strings.TEXT_4}</p>
-      </section>
-    </div>
-  </div>`;
+  // return (
+  //   <div dangerouslySetInnerHTML={{ __html: pageContent }}></div>
+  // )
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: pageContent }}></div>
-  )
+    <div className="about-us-container">
+      <div className="container">
+        <h1 className={!drawTitle ? 'hide-it' : ''}>{strings.WHO_ARE_WE}</h1>
+
+        <section>
+          <h2>{strings.WHEARE_ARE_wE}</h2>
+          <p>{strings.TEXT_1}</p>
+          <div style={{padding: window.innerWidth / window.innerHeight < 1 ? "0 20px" : "0"}}>
+          {drawMap && <Map position={[37.617611, 14.8882705]} locations={[
+              {
+                _id: "", 
+                name: "Via Regina Margherita, 46 Santa Maria Di Licodia", 
+                latitude: 37.617760, 
+                longitude: 14.88820
+              }  
+            ]} initialZoom={30}></Map>}
+          </div>
+        </section>
+
+        <section>
+          <h2>{strings.THE_BUILDING}</h2>
+          <p>{strings.TEXT_2}</p>
+        </section>
+
+        <section>
+          <h2>{strings.ROOMS}</h2>
+          <div className="card">
+            <p>{strings.ROOMS_SUBTITLE}:</p>
+            <ul>
+              <li>{strings.COFFE_MACHINE}</li>
+              <li>{strings.BAR_FRIDGE}</li>
+              <li>{strings.SMOKE_NOT_ALLOWED}</li>
+              <li>{strings.BIKE_RENTING}</li>
+              <li>{strings.MOTORBIKE_TOUR_SERVICE}</li>
+              <li>{strings.PRIVATE_BATHROOM}</li>
+              <li>{strings.FREE_WIFI}</li>
+              <li>{strings.AIR_CONDITIONING}</li>
+              <li>{strings.SMART_TV}</li>
+            </ul>
+            <p>{strings.TEXT_3}</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>{strings.EXTRA_SERVICES}</h2>
+          <ul>
+            <li>{strings.ANIMALS_ALLOWED}</li>
+            <li>{strings.TRANSPORTATION_AVAILABILITY}</li>
+            <li>{strings.EXTRA_BEDS}</li>
+            <li>{strings.SELF_CHECKIN}</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>{strings.WHY_US}</h2>
+          <ul>
+            <li>{strings.STRATEGIC_LOCATION}</li>
+            <li>{strings.UNIQUE_VIBE}</li>
+            <li>{strings.COMFY_ENV}</li>
+            <li>{strings.FLEXIBLE_CUSTOMERAWARE_HOUSING}</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>{strings.IDEAL_FOR}</h2>
+          <p>{strings.TEXT_4}</p>
+        </section>
+      </div>
+    </div>
+  );
 }
 
 export default AboutUsComponent;
