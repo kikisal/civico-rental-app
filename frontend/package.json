@@ -44,7 +44,7 @@
     "leaflet": "^1.9.4",
     "leaflet-boundary-canvas": "^1.0.0",
     "localized-strings": "^2.0.3",
-    "lucide-react": "^0.539.0",
+    "lucide-react": "^0.541.0",
     "nprogress": "^0.2.0",
     "radix-ui": "^1.4.2",
     "react": "^19.1.0",

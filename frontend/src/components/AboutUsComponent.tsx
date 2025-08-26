@@ -11,15 +11,21 @@ const __strings = {
   it: {
     WHO_ARE_WE: "Chi Siamo",
     WHEARE_ARE_wE: "Dove Siamo",
-    TEXT_1: `Civico 46 Rooms si trova a pochi metri dal centro di S.M. di Licodia, in via Regina Margherita 46, zona
-          strategica per visitare il paese e le meraviglie della zona etnea. A pochi km dalla città di Catania, il
-          Rifugio Sapienza, il parco Etnaland e i poli commerciali. Facile accesso alle reti autostradali e ben
-          collegato con i mezzi pubblici.`,
+    TEXT_1: `Civico 46 Rooms si trova a pochi metri dal centro cittadino in Via Regina Margherita 46, zona strategica per visitare le meraviglie della zona etnea, a 27 chilometri dal dalla funivia (Rifugio Sapienza), e dai Crateri Silvestri.
+A 27 chilometri da Piazza Duomo di Catania, a 26 chilometri dall'Anfiteatro di Catania, a 28 kilometri dall'Aeroporto di Fontana Rossa di Catania, a 14 chilometri dal Parco di Etnaland, e a 40 minuti da Taormina.
+Facile accesso alle reti autostradali, e ben collegato con mezzi pubblici.`,
     THE_BUILDING: "La Struttura",
     TEXT_2: `Ospitato in un edificio storico del 1800, Civico 46 nasce da una recente ristrutturazione che ha saputo unire
           il fascino dell’epoca con tocchi moderni e funzionali. Un luogo accogliente, intimo e ricco di carattere.`,
     ROOMS: "Le Camere",
-    ROOMS_SUBTITLE: "Disponiamo di tre camere indipendenti, tutte dotate di",
+    ROOMS_SUBTITLE: "Disponiamo di tre camere indipendenti di circa 40m², tutte dotate di",
+
+    COFFE_MACHINE: "Macchine da caffe",
+    BAR_FRIDGE: "Frigo bar",
+    SMOKE_NOT_ALLOWED: "Camere non fumatore (tranne nel cortile)",
+    BIKE_RENTING: "Possibilita di noleggio bici",
+    MOTORBIKE_TOUR_SERVICE: "Organizzazioni escursioni motociclistiche fuoristrada nel Parco dei Nebrodi",
+
     PRIVATE_BATHROOM: "Bagno privato",
     FREE_WIFI: "Wi-Fi gratuito",
     AIR_CONDITIONING: "Aria condizionata",
@@ -43,11 +49,20 @@ const __strings = {
   en: {
     WHO_ARE_WE: "Who We Are",
     WHEARE_ARE_wE: "Where We Are",
-    TEXT_1: `Civico 46 Rooms is located just a few meters from the center of S.M. di Licodia, at Via Regina Margherita 46, a strategic area to explore the town and the wonders of the Etna region. Just a few kilometers from the city of Catania, the Rifugio Sapienza, Etnaland park, and commercial centers. Easy access to motorways and well connected by public transport.`,
+    TEXT_1: `Civico 46 Rooms is located just a few meters from the city center on Via Regina Margherita 46, a strategic area for visiting the wonders of the Etna region, 27 kilometers from the cable car (Rifugio Sapienza) and the Silvestri Craters.
+It is 27 kilometers from Piazza Duomo in Catania, 26 kilometers from the Catania Amphitheater, 28 kilometers from Catania Fontanarossa Airport, 14 kilometers from Etnaland Park, and 40 minutes from Taormina.
+Easily accessible from the highway network and well connected by public transport.`,
     THE_BUILDING: "The Building",
     TEXT_2: `Housed in a historic 19th-century building, Civico 46 comes from a recent renovation that combines period charm with modern and functional touches. A welcoming, intimate place full of character.`,
     ROOMS: "The Rooms",
-    ROOMS_SUBTITLE: "We offer three independent rooms, all equipped with",
+    ROOMS_SUBTITLE: "We have three independent rooms of about 40 m², all equipped with",
+      
+    COFFE_MACHINE: "Coffee machine",
+    BAR_FRIDGE: "Mini bar fridge",
+    SMOKE_NOT_ALLOWED: "Non-smoking rooms (except in the courtyard)",
+    BIKE_RENTING: "Possibility of bike rental",
+    MOTORBIKE_TOUR_SERVICE: "Off-road motorbike tour organization in the Nebrodi Park",
+
     PRIVATE_BATHROOM: "Private bathroom",
     FREE_WIFI: "Free Wi-Fi",
     AIR_CONDITIONING: "Air conditioning",
@@ -69,11 +84,20 @@ const __strings = {
   de: {
     WHO_ARE_WE: "Wer Wir Sind",
     WHEARE_ARE_wE: "Wo Wir Sind",
-    TEXT_1: `Civico 46 Rooms befindet sich nur wenige Meter vom Zentrum von S.M. di Licodia entfernt, in der Via Regina Margherita 46 – ein strategischer Standort, um das Dorf und die Wunder der Ätna-Region zu erkunden. Nur wenige Kilometer von der Stadt Catania, dem Rifugio Sapienza, dem Etnaland-Park und Einkaufszentren entfernt. Einfacher Zugang zu Autobahnen und gute Anbindung an öffentliche Verkehrsmittel.`,
+    TEXT_1: `Civico 46 Rooms befindet sich nur wenige Meter vom Stadtzentrum entfernt in der Via Regina Margherita 46, in einer strategischen Lage, um die Wunder der Ätna-Region zu besuchen, 27 Kilometer von der Seilbahn (Rifugio Sapienza) und den Silvestri-Kratern entfernt.
+27 Kilometer von der Piazza Duomo in Catania, 26 Kilometer vom Amphitheater von Catania, 28 Kilometer vom Flughafen Catania Fontanarossa, 14 Kilometer vom Park Etnaland und 40 Minuten von Taormina entfernt.
+Leichter Zugang zum Autobahnnetz und gut mit öffentlichen Verkehrsmitteln verbunden.`,
     THE_BUILDING: "Das Gebäude",
     TEXT_2: `Untergebracht in einem historischen Gebäude aus dem 19. Jahrhundert, entstand Civico 46 durch eine kürzliche Renovierung, die historischen Charme mit modernen und funktionalen Elementen vereint. Ein gemütlicher, intimer Ort voller Charakter.`,
     ROOMS: "Die Zimmer",
-    ROOMS_SUBTITLE: "Wir verfügen über drei unabhängige Zimmer, alle ausgestattet mit",
+    ROOMS_SUBTITLE: "Wir verfügen über drei unabhängige Zimmer von etwa 40 m², alle ausgestattet mit",
+    
+    COFFE_MACHINE: "Kaffeemaschine",
+    BAR_FRIDGE: "Minibar-Kühlschrank",
+    SMOKE_NOT_ALLOWED: "Nichtraucherzimmer (außer im Innenhof)",
+    BIKE_RENTING: "Möglichkeit, Fahrräder zu mieten",
+    MOTORBIKE_TOUR_SERVICE: "Organisation von Offroad-Motorradtouren im Nebrodi-Park",
+    
     PRIVATE_BATHROOM: "Privatem Bad",
     FREE_WIFI: "Kostenlosem WLAN",
     AIR_CONDITIONING: "Klimaanlage",
@@ -95,11 +119,20 @@ const __strings = {
   es: {
     WHO_ARE_WE: "Quiénes Somos",
     WHEARE_ARE_wE: "Dónde Estamos",
-    TEXT_1: `Civico 46 Rooms se encuentra a pocos metros del centro de S.M. di Licodia, en la vía Regina Margherita 46, una zona estratégica para visitar el pueblo y las maravillas de la región del Etna. A pocos kilómetros de la ciudad de Catania, del Rifugio Sapienza, del parque Etnaland y de centros comerciales. Fácil acceso a autopistas y bien conectado con el transporte público.`,
+    TEXT_1: `Civico 46 Rooms se encuentra a pocos metros del centro de la ciudad en Via Regina Margherita 46, una zona estratégica para visitar las maravillas de la región del Etna, a 27 kilómetros del teleférico (Rifugio Sapienza) y de los Cráteres Silvestri.
+A 27 kilómetros de la Piazza Duomo de Catania, a 26 kilómetros del Anfiteatro de Catania, a 28 kilómetros del Aeropuerto de Catania Fontanarossa, a 14 kilómetros del parque Etnaland y a 40 minutos de Taormina.
+Fácil acceso a la red de autopistas y bien conectado con transporte público.`,
     THE_BUILDING: "El Edificio",
     TEXT_2: `Ubicado en un edificio histórico del siglo XIX, Civico 46 surge de una reciente renovación que ha sabido combinar el encanto de la época con toques modernos y funcionales. Un lugar acogedor, íntimo y lleno de carácter.`,
     ROOMS: "Las Habitaciones",
-    ROOMS_SUBTITLE: "Contamos con tres habitaciones independientes, todas equipadas con",
+    ROOMS_SUBTITLE: "Disponemos de tres habitaciones independientes de unos 40 m², todas equipadas con",
+
+    COFFE_MACHINE: "Máquina de café",
+    BAR_FRIDGE: "Frigorífico bar",
+    SMOKE_NOT_ALLOWED: "Habitaciones para no fumadores (excepto en el patio)",
+    BIKE_RENTING: "Posibilidad de alquiler de bicicletas",
+    MOTORBIKE_TOUR_SERVICE: "Organización de excursiones en moto todoterreno en el Parque de los Nebrodi",
+
     PRIVATE_BATHROOM: "Baño privado",
     FREE_WIFI: "Wi-Fi gratuito",
     AIR_CONDITIONING: "Aire acondicionado",
@@ -121,11 +154,20 @@ const __strings = {
   fr: {
     WHO_ARE_WE: "Qui Nous Sommes",
     WHEARE_ARE_wE: "Où Nous Sommes",
-    TEXT_1: `Civico 46 Rooms est situé à quelques mètres du centre de S.M. di Licodia, via Regina Margherita 46, une zone stratégique pour visiter le village et les merveilles de la région de l'Etna. À quelques kilomètres de la ville de Catane, du Rifugio Sapienza, du parc Etnaland et des centres commerciaux. Accès facile aux autoroutes et bien desservi par les transports publics.`,
+    TEXT_1: `Civico 46 Rooms se trouve à quelques mètres du centre-ville, Via Regina Margherita 46, un emplacement stratégique pour visiter les merveilles de la région de l’Etna, à 27 kilomètres du téléphérique (Rifugio Sapienza) et des Cratères Silvestri.
+À 27 kilomètres de la Piazza Duomo de Catane, à 26 kilomètres de l’Amphithéâtre de Catane, à 28 kilomètres de l’Aéroport de Catane Fontanarossa, à 14 kilomètres du parc Etnaland, et à 40 minutes de Taormine.
+Accès facile au réseau autoroutier et bien desservi par les transports en commun.`,
     THE_BUILDING: "Le Bâtiment",
     TEXT_2: `Installé dans un bâtiment historique du XIXe siècle, Civico 46 est le fruit d'une rénovation récente qui a su allier le charme d'époque à des touches modernes et fonctionnelles. Un lieu accueillant, intime et plein de caractère.`,
     ROOMS: "Les Chambres",
-    ROOMS_SUBTITLE: "Nous disposons de trois chambres indépendantes, toutes équipées de",
+    ROOMS_SUBTITLE: "Nous disposons de trois chambres indépendantes d’environ 40 m², toutes équipées de",
+    
+    COFFE_MACHINE: "Machine à café",
+    BAR_FRIDGE: "Réfrigérateur de bar",
+    SMOKE_NOT_ALLOWED: "Chambres non-fumeurs (sauf dans la cour)",
+    BIKE_RENTING: "Possibilité de location de vélos",
+    MOTORBIKE_TOUR_SERVICE: "Organisation d’excursions à moto tout-terrain dans le Parc des Nébrodes",
+    
     PRIVATE_BATHROOM: "Salle de bain privée",
     FREE_WIFI: "Wi-Fi gratuit",
     AIR_CONDITIONING: "Climatisation",
@@ -170,6 +212,11 @@ const AboutUsComponent = (props: any) => {
         <div class="card">
           <p>${strings.ROOMS_SUBTITLE}:</p>
           <ul>
+            <li>${strings.COFFE_MACHINE}</li>
+            <li>${strings.BAR_FRIDGE}</li>
+            <li>${strings.SMOKE_NOT_ALLOWED}</li>
+            <li>${strings.BIKE_RENTING}</li>
+            <li>${strings.MOTORBIKE_TOUR_SERVICE}</li>
             <li>${strings.PRIVATE_BATHROOM}</li>
             <li>${strings.FREE_WIFI}</li>
             <li>${strings.AIR_CONDITIONING}</li>
