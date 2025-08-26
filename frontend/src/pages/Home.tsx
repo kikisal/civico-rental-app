@@ -555,7 +555,9 @@ const Home = () => {
 						</div>
 					</div>
 				</div> */}
-				<ContactUsComponent></ContactUsComponent>
+				<div style={{marginBottom: "50px"}}>
+					<ContactUsComponent></ContactUsComponent>
+				</div>
 				<Footer />
 			</div>
 
