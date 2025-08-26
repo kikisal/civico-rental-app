@@ -11,7 +11,7 @@ const __strings = {
   it: {
     WHO_ARE_WE: "Chi Siamo",
     WHEARE_ARE_wE: "Dove Siamo",
-    TEXT_1: `Civico 46 Rooms si trova a pochi metri dal centro cittadino in Via Regina Margherita 46, zona strategica per visitare le meraviglie della zona etnea, a 27 chilometri dal dalla funivia (Rifugio Sapienza), e dai Crateri Silvestri.
+    TEXT_1: `Civico 46 Rooms si trova a pochi metri dal centro cittadino in Via Regina Margherita 46, zona strategica per visitare le meraviglie della zona etnea, a 27 chilometri dalla funivia (Rifugio Sapienza), e dai Crateri Silvestri.
 A 27 chilometri da Piazza Duomo di Catania, a 26 chilometri dall'Anfiteatro di Catania, a 28 chilometri dall'Aeroporto di Fontana Rossa di Catania, a 14 chilometri dal Parco di Etnaland, e a 40 minuti da Taormina.
 Facile accesso alle reti autostradali, e ben collegato con mezzi pubblici.`,
     THE_BUILDING: "La Struttura",
