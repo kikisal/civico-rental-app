@@ -429,11 +429,12 @@ div.home div.customer-care div.customer-care-img img {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	letter-spacing: 8px;
+	letter-spacing: 4px;
 	text-shadow: 0 0 27px black;
 	font-weight: bold;
 	font-size: 4rem;
 	color:#fff;
+    font-style: italic;
 }
 
 .left-gradient, .right-gradient {
