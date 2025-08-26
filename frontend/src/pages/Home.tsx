@@ -10,6 +10,7 @@ import {
 	FlashOn,
 	CheckBox,
 	Description,
+	ContactSupportSharp,
 } from '@mui/icons-material'
 import L from 'leaflet'
 import * as movininTypes from ':movinin-types'
@@ -33,6 +34,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import axiosInstance from '@/services/axiosInstance'
 import * as UserService from '@/services/UserService'
 import AboutUsComponent from '@/components/AboutUsComponent'
+import ContactUsComponent from '@/components/ContactUsComponent'
 
 type AssetImage = {
 	url: 		string,
@@ -553,8 +555,11 @@ const Home = () => {
 						</div>
 					</div>
 				</div> */}
+				<ContactUsComponent></ContactUsComponent>
 				<Footer />
 			</div>
+
+
 
 			<Dialog
 				fullWidth={env.isMobile}
