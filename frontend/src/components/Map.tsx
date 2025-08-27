@@ -156,6 +156,7 @@ const Map = ({
         zoom={_initialZoom}
         className={`${className ? `${className} ` : ''}map`}
         ref={setMap}
+        zoomControl={false}
       >
         <TileLayer
           // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
