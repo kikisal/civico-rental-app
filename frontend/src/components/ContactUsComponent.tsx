@@ -8,10 +8,17 @@ import Footer from '@/components/Footer'
 // import '@/assets/css/contact-us.css';
 import '@/assets/css/contact.css';
 
-const ContactUsComponent = () => {
+const contactLabels:any  = {en: "Contact Us", it: "Contatti", es: "Contáctanos", de: "Kontaktieren Sie uns", fr: "Contactez-nous"};
+const HARDCODED_HEADLINE = "Civico 46 Rooms";
+
+const ContactUsComponent = (props: any) => {
+  const hasContactUs  = !!props.contactUsTitle;
+  const lang          = props.lang ?? "en";
+  const contactLabel  = hasContactUs ? contactLabels[lang] : HARDCODED_HEADLINE;
+
   const pageContent = `	<div class="flex-info-container">
 	<div class="container">
-        <h1>Civico 46 Rooms</h1>
+        <h1>${contactLabel}</h1>
         <p class="email"><i class="fa-solid fa-envelope"></i> <a href="mailto:civico46rooms@gmail.com">civico46rooms@gmail.com</a></p>
         
         <div class="phones">

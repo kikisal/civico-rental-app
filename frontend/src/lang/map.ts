@@ -3,19 +3,19 @@ import * as langHelper from '@/utils/langHelper'
 
 const strings = new LocalizedStrings({
   fr: {
-    SELECT_LOCATION: 'Choisir cette destination',
+    SELECT_LOCATION: 'Ouvrir sur la carte'
   },
   en: {
-    SELECT_LOCATION: 'Select Destination',
+    SELECT_LOCATION: 'Open on map',
   },
   it: {
-    SELECT_LOCATION: 'Seleziona destinazione',
+    SELECT_LOCATION: 'Apri sulla mappa',
   },
   de: {
-    SELECT_LOCATION: 'Reiseziel auswählen',
+    SELECT_LOCATION: 'Auf der Karte öffnen',
   },
   es: {
-    SELECT_LOCATION: 'Seleccionar destino',
+    SELECT_LOCATION: 'Abrir en el mapa',
   }
 })
 

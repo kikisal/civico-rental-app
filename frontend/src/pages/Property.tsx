@@ -23,6 +23,8 @@ import Progress from '@/components/Progress'
 
 import '@/assets/css/property.css'
 import BookingCalendar from '@/components/booking-calendar/BookingCalendar'
+import AboutUsComponent from '@/components/AboutUsComponent'
+import ContactUsComponent from '@/components/ContactUsComponent'
 
 function getTextByLang(lang: string, text: string) {
 	const parts = text.split(/\n(?=[a-z]{2}\n)/g);
@@ -246,7 +248,7 @@ const Property = () => {
 
 								{/* Property description */}
 								<div className="description">
-									<div dangerouslySetInnerHTML={{ __html: selectedDescription }} />
+									{/* <div dangerouslySetInnerHTML={{ __html: selectedDescription }} /> */}
 								</div>
 
 								<div className="property-footer">
@@ -340,6 +342,8 @@ const Property = () => {
 									}
 
 								</div>
+
+								<ContactUsComponent contactUsTitle={true} lang={language}/>
 
 							</div>
 

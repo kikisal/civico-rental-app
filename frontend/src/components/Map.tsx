@@ -81,7 +81,6 @@ const Map = ({
   locations,
   className,
   children,
-  onSelelectLocation,
 }: MapProps) => {
   const _initialZoom = initialZoom || 5.5
   const [zoom, setZoom] = useState(_initialZoom)
@@ -116,24 +115,29 @@ const Map = ({
         <Popup className="marker">
           <div className="name">{marker.name}</div>
           <div className="action">
-            {!!onSelelectLocation && (
+            { (
               <button
                 type="button"
                 className="action-btn"
                 onClick={async () => {
-                  try {
-                    if (onSelelectLocation) {
-                      const { status, data } = await LocationService.getLocationId(marker.name, 'en')
+                  // try {
+                  //   if (onSelelectLocation) {
+                  //     const { status, data } = await LocationService.getLocationId(marker.name, 'en')
 
-                      if (status === 200) {
-                        onSelelectLocation(data)
-                      } else {
-                        helper.error()
-                      }
-                    }
-                  } catch (err) {
-                    helper.error(err)
-                  }
+                  //     if (status === 200) {
+                  //       onSelelectLocation(data)
+                  //     } else {
+                  //       helper.error()
+                  //     }
+                  //   }
+                  // } catch (err) {
+                  //   helper.error(err)
+                  // }
+                  const link = document.createElement('a');
+                  link.href = 'https://www.google.com/maps/@37.6175516,14.8881466,3a,75y,310.66h,78.69t/data=!3m7!1e1!3m5!1s-2oyI7BIlbn4qyFjqt1JZw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D11.310000000000002%26panoid%3D-2oyI7BIlbn4qyFjqt1JZw%26yaw%3D310.66!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDgyNC4wIKXMDSoASAFQAw%3D%3D';
+                  link.target = '_blank';
+                  link.click();
+                  // alert(`clicked on marker: ${marker.name}`);
                 }}
               >
                 {strings.SELECT_LOCATION}

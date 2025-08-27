@@ -160,10 +160,11 @@ const Home = () => {
 				let desc  = productTranslations!.get(objId);
 
 				if (!desc) continue;
-				const descText = desc[lang];
+				// const descText = desc[lang];
 
 				const node = roomCard.querySelector('.room-description p') as HTMLParagraphElement;
-				node.innerText = descText;
+				node.innerText = '';
+				node.remove();
 
 				if (!_roomCard) 
 					continue;
@@ -392,7 +393,7 @@ const Home = () => {
 
 				<div className="services">
 					<div ref={roomInfoRef} className='rooms-ref'></div>
-					<div className='about-us-component'><AboutUsComponent drawMap={window.innerWidth / window.innerHeight < 1}></AboutUsComponent></div>
+					<div className='about-us-component'><AboutUsComponent drawMap={true}></AboutUsComponent></div>
 					{/* <div>{(
 						<div className="search">
 							<div className="home-search">
@@ -556,7 +557,7 @@ const Home = () => {
 					</div>
 				</div> */}
 				<div style={{marginBottom: "50px"}}>
-					<ContactUsComponent></ContactUsComponent>
+					<ContactUsComponent contactUsTitle={true} lang={UserService.getLanguage() as string}></ContactUsComponent>
 				</div>
 				<Footer />
 			</div>
