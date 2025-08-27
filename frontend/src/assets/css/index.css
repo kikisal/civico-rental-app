@@ -11,3 +11,10 @@
 .github-fork-ribbon::before {
   background-color: #272727;
 }
+
+@font-face {
+  font-family: 'CenturyGothic';
+  src: url('https://civico46rooms.it/assets/centurygothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
