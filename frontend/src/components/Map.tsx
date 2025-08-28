@@ -134,7 +134,7 @@ const Map = ({
                   //   helper.error(err)
                   // }
                   const link = document.createElement('a');
-                  link.href = 'google.com/maps/place/Via+Regina+Margherita,+46,+95038+Santa+Maria+di+Licodia+CT/@37.6175844,14.8880866,20z/data=!4m6!3m5!1s0x13115180ec5b4cbf:0x11ec0a25356564b0!8m2!3d37.617611!4d14.8882705!16s%2Fg%2F11c5lm9z6y?entry=tts&g_ep=EgoyMDI1MDgyNS4wIPu8ASoASAFQAw%3D%3D&skid=bbb113bc-205c-4df7-a135-8958648db1e0';
+                  link.href = 'https://google.com/maps/place/Via+Regina+Margherita,+46,+95038+Santa+Maria+di+Licodia+CT/@37.6175844,14.8880866,20z/data=!4m6!3m5!1s0x13115180ec5b4cbf:0x11ec0a25356564b0!8m2!3d37.617611!4d14.8882705!16s%2Fg%2F11c5lm9z6y?entry=tts&g_ep=EgoyMDI1MDgyNS4wIPu8ASoASAFQAw%3D%3D&skid=bbb113bc-205c-4df7-a135-8958648db1e0';
                   link.target = '_blank';
                   link.click();
                   // alert(`clicked on marker: ${marker.name}`);
