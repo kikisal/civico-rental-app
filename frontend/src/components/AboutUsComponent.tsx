@@ -216,7 +216,7 @@ const AboutUsComponent = (props: any) => {
               }  
             ]} initialZoom={30}></Map>}
              */}
-             {drawMap && (<iframe src={`https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d790.086104248127!2d14.8878521!3d37.6175855!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13115180ec5b4cbf%3A0x11ec0a25356564b0!2sVia%20Regina%20Margherita%2C%2046%2C%2095038%20Santa%20Maria%20di%20Licodia%20CT!5e0!3m2!1sen!2sit!4v1756369021887!5m2!1s${UserService.getLanguage()}!2s${UserService.getLanguage()}&hl=${UserService.getLanguage()}`} width="600" height="450" style={{border:0, width: "100%"}} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>)}
+             {drawMap && (<iframe src={`https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d790.086104248127!2d14.8878521!3d37.6175855!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13115180ec5b4cbf%3A0x11ec0a25356564b0!2sVia%20Regina%20Margherita%2C%2046%2C%2095038%20Santa%20Maria%20di%20Licodia%20CT!5e0!3m2!1sen!2sit!4v1756369021887!5m2!1s${UserService.getLanguage()}!2s${UserService.getLanguage()}`} width="600" height="450" style={{border:0, width: "100%"}} allowFullScreen={false} loading="lazy"></iframe>)}
           </div>
         </section>
 
